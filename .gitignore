@@ -1,0 +1,7 @@
+*.pyc
+.idea
+*.sqlite
+local_settings.py
+
+trailers_shop/media/*
+trailers_shop/static/*
