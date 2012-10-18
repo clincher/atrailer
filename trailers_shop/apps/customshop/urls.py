@@ -8,8 +8,8 @@ from shop.views.order import OrderListView, OrderDetailView
 from shop.views.product import ProductDetailView
 #from shop_simplecategories.views import CategoryDetailView
 
-from morozoff.apps.customshop.models import CustomProduct
-from morozoff.apps.customshop.views import (MyCheckoutSelectionView,
+from trailers_shop.apps.customshop.models import CustomProduct
+from trailers_shop.apps.customshop.views import (MyCheckoutSelectionView,
     CartItemDeleteView)
 
 
@@ -18,13 +18,13 @@ urlpatterns = patterns('',
 #    url(r'^$',
 #        ListView.as_view(
 #            model=CustomProduct,
-#            template_name="new/customshop/customproduct_list.html"
+#            template_name="customshop/customproduct_list.html"
 #        ),
 #        name='product_list'
 #    ),
     url(r'^$',
         TemplateView.as_view(
-            template_name="new/index.html"
+            template_name="index.html"
         ),
         name='index'
     ),
@@ -32,7 +32,7 @@ urlpatterns = patterns('',
     url(r'^catalog/$',
         ListView.as_view(
             model=CustomProduct,
-            template_name="new/customshop/customproduct_list.html",
+            template_name="customshop/customproduct_list.html",
             paginate_by=12
         ),
         name='product_list'
@@ -40,7 +40,7 @@ urlpatterns = patterns('',
 
     url(r'^product/(?P<slug>[0-9A-Za-z-_.//]+)$',
         ProductDetailView.as_view(
-            template_name="new/customshop/product_detail.html"
+            template_name="customshop/product_detail.html"
         ),
         name='product_detail'
     ),
@@ -59,11 +59,11 @@ urlpatterns = patterns('',
     url('^cart/item/$', CartDetails.as_view(action='post'), # POST
         name='cart_item_add' ),
     url(r'^cart/$', CartDetails.as_view(
-        template_name="new/customshop/cart.html"
+        template_name="customshop/cart.html"
     ), name='cart'), # GET
     url(r'^cart/update/$', CartDetails.as_view(
         action='put',
-        template_name="new/customshop/cart.html"
+        template_name="customshop/cart.html"
         ),
         name='cart_update'),
 
@@ -73,7 +73,7 @@ urlpatterns = patterns('',
 
     # Checkout
     url(r'^checkout/$', MyCheckoutSelectionView.as_view(
-            template_name="new/customshop/selection.html"
+            template_name="customshop/selection.html"
         ),
         name='checkout_selection' # First step of the checkout process
         ),
@@ -84,7 +84,7 @@ urlpatterns = patterns('',
         name='checkout_payment' # First step of the checkout process
         ),
     url(r'^checkout/thank_you/$', ThankYouView.as_view(
-            template_name="new/customshop/thank_you.html"
+            template_name="customshop/thank_you.html"
         ),
         name='thank_you_for_your_order' # Second step of the checkout process
         ),
