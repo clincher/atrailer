@@ -40,6 +40,7 @@ class MyOrderAdmin(OrderAdmin):
 admin.site.register(Category, ProductCategoryAdmin)
 admin.site.register(Product, CustomProductAdmin)
 admin.site.unregister(Order)
+
 ORDER_MODEL = getattr(settings, 'SHOP_ORDER_MODEL', None)
 if not ORDER_MODEL:
     admin.site.register(Order, MyOrderAdmin)

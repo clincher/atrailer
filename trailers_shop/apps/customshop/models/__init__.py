@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from shop.order_signals import completed
+from singleton_models.models import SingletonModel
 
 from base import BaseProductImage, BaseProduct
 from trailers_shop.apps.customshop.signals import confirmed_email_notification
@@ -24,4 +25,3 @@ class ProductImage(BaseProductImage):
 
 
 completed.connect(confirmed_email_notification)
-
