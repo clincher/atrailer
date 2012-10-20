@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="ru">
+    <head>
+        <meta name="robots" content="{if $page.noindex}none{else}all{/if}" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="description" content="{$page.description}" />
+        <meta name="keywords" content="{$page.keywords}" />
+        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+        <title>{% block title %}Интернет-магазин автоприцепов{% endblock %}</title>
+        <link href="{{ STATIC_URL }}images/styles.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="{{ STATIC_URL }}images/jquery-1.6.4.min.js"></script>
+        <!--<script type="text/javascript">
+            $(document).ready(function() {
+                $('.wrap-block-top').css('height', 20);
+                $('.block-top').hide();
+                $('a.but').toggle(function() {
+                    $('.block-top').slideDown(1000);
+                    $('.wrap-block-top').css('height', 132);
+                    return false;   
+                }, function() {
+                    $('.block-top').slideUp(1000, function(){
+                        $('.wrap-block-top').css('height', 20);     
+                    });
+                    return false;
+                });
+            });
+        </script>-->
+        <!--[if lte IE 7]>
+            <link href="{{ STATIC_URL }}images/stylesie.css" rel="stylesheet" type="text/css" />
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div id="wrap">
+            <div class="wrap-header">
+                <div id="header">
+                    <div class="logo"><a href="#"><img src="{{ STATIC_URL }}images/logo.png" border="0" alt="" /></a>Интернет-магазин автоприцепов</div>
+                    <div class="cart">
+                        <span class="title"><a href="#">Корзина товаров</a></span>
+                        Предметов в корзине: <a href="#">0 шт.</a> на сумму : <a href="#">0 руб.</a>
+                    </div>
+                    <div class="phone">8 (925) <span>009 62 93</span></div>
+                </div>
+            </div>
+            <div class="wrap-block-top">
+                <div class="block-top">
+                    <div class="title-block">Что перевозим:</div>
+                    <ul id="upm">
+                        <li><a href="#">Грузы</a></li>
+                        <li><a href="#">Автомобиль</a></li>
+                        <li><a href="#">Мотоцикл</a></li>
+                        <li class="active"><a href="#">Квадрацикл</a></li>
+                        <li><a href="#">Снегоход</a></li>
+                        <li><a href="#">Гидроцикл</a></li>
+                        <li><a href="#">Лодка, малый катер, рид</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                    <div class="wrap-form">
+                        <div class="form-title">Выберите критерии<br />подбора прицепа</div>
+                        <form action="" method="">
+                            <span class="wr" style="width:170px;">
+                                <span class="title">Длина платформы:</span>
+                                <input type="checkbox" value="" /><em>от 1,5 до 3 метров</em><br clear="all" />
+                                <input type="checkbox" value="" /><em>от 3 до 6 метров</em>
+                            </span>
+                            <span class="wr" style="width:150px;">
+                                <span class="title">Количество осей:</span>
+                                <input type="checkbox" value="" /><em>Одноостный</em><br clear="all" />
+                                <input type="checkbox" value="" /><em>Двухостный</em>
+                            </span>
+                            <span class="wr" style="width:153px;">
+                                <span class="title">Подвеска:</span>
+                                <input type="checkbox" value="" /><em>Резино-жгутовая</em><br clear="all" />
+                                <input type="checkbox" value="" /><em>Рессорная</em>
+                            </span>
+                            <span class="wr" style="width:150px;">
+                                <span class="title">Тормоза на осях:</span>
+                                <input type="checkbox" value="" /><em>С тормозами</em><br clear="all" />
+                                <input type="checkbox" value="" /><em>Без тормозов</em>
+                            </span>
+                            <span class="wr" style="width:150px;">
+                                <span class="title">Грузоподъемность:</span>
+                                <input type="checkbox" value="" /><em>До 8 тон</em><br clear="all" />
+                                <input type="checkbox" value="" /><em>До 25 тон</em>
+                            </span>
+                            <div class="clear"></div>
+                        </form>
+                    <div class="clear"></div>
+                    </div>
+                <div class="clear"></div>
+                </div>
+            <a href="#" class="but"></a>
+            </div>
+          <div class="cont-box">
+                <div class="icos"><img src="{{ STATIC_URL }}images/ico.png" alt="" border="0" usemap="#Map" />
+                  <map name="Map" id="Map">
+                    <area shape="rect" coords="1,0,27,26" href="#" />
+                    <area shape="rect" coords="42,0,67,26" href="#" />
+                    <area shape="rect" coords="83,0,108,26" href="#" />
+                  </map>
+              </div>
+              <div class="left-block">
+                {% block left_block %}
+                <ul id="lmenu">
+                    <li><a href="#"><span class="bot"><span class="bg">Каталог прицепов</span></span></a></li>
+                    <li><a href="#"><span class="bot"><span class="bg">Фаркопы</span></span></a></li>
+                    <li class="active"><a href="#"><span class="bot"><span class="bg">Комплектующие</span></span></a></li>
+                    <li><a href="#"><span class="bot"><span class="bg">Доставка</span></span></a></li>
+                    <li><a href="#"><span class="bot"><span class="bg">О компании</span></span></a></li>
+                    <li><a href="#"><span class="bot"><span class="bg">Где купить</span></span></a></li>
+                </ul>
+                <a href="#" class="zak-zv">Заказать звонок</a>
+                <a href="#" class="price">Скачать прайс</a>
+                {% endblock %}
+              </div>
+              <div class="right-block">
+                <table class="main-block" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="sh-lf">&nbsp;</td>
+                    <td class="middle">
+                        <div class="cont-top"></div>
+                        <div class="wrap-content">
+                            <a href="javascript:scroll(0,0)" class="up">Наверх</a>
+                            <div class="path"><a href="#">Главная</a> / Интернет-магазин</div>
+                            <div class="content">
+                                <div class="product-main">
+                                    <div class="name"><a href="#">Название модели 829450 (3,5 р-ж)</a></div>
+                                    <div class="for-pic"><img src="{{ STATIC_URL }}images/prod-img.jpg" border="0" alt="" /></div>
+                                    <div class="note">
+                                        <div class="desc">
+                                            Прицеп предназначен для перевозки различных грузов. Варианты исполнения возможны как тент с задним бортом, так и с...  Прицеп предназначен для перевозки различных грузов. Варианты исполнения возможны как тент с задним бортом, так и с...  Прицеп предназначен для перевозки различных грузов. Прицеп предназначен для перевозки различных грузов.
+                                        </div>
+                                        <div class="price">Цена: <span><strong>98.000</strong> руб.</span></div>
+                                        <a href="#" class="buy">Заказать</a>
+                                        <a href="#" class="add">В корзину</a>
+                                        <div class="clear"></div>
+                                    </div>
+                                <div class="clear"></div>
+                                </div>
+                                <div class="product-main">
+                                    <div class="name"><a href="#">Название модели 829450 (3,5 р-ж)</a></div>
+                                    <div class="for-pic"><img src="images/prod-img.jpg" border="0" alt="" /></div>
+                                    <div class="note">
+                                        <div class="desc">
+                                            Прицеп предназначен для перевозки различных грузов. Варианты исполнения возможны как тент с задним бортом, так и с...  Прицеп предназначен для перевозки различных грузов. Варианты исполнения возможны как тент с задним бортом, так и с...  Прицеп предназначен для перевозки различных грузов. Прицеп предназначен для перевозки различных грузов.
+                                        </div>
+                                        <div class="price">Цена: <span class="old"><strong>98.000</strong> руб.</span><span><strong>50.000</strong> руб.</span></div>
+                                        <a href="#" class="buy">Заказать</a>
+                                        <a href="#" class="nobuy">Нет в наличии</a>
+                                        <div class="clear"></div>
+                                    </div>
+                                <div class="clear"></div>
+                                </div>
+                                <div class="text">
+                                    Информация размещена для примера, Вам необходимо заменить ее на собственную. Сайт наполнен тестовой информацией. Вам необходимо самостоятельно заменить ее на другую, соответствующую Вашим требованиям, сделать это можно через систему управления сайтом.Мы будем рады обсудить все ваши предложения и пожелания, и очень надеемся, что вы будете нашим постоянным клиентом. Вам необходимо самостоятельно заменить ее на другую, соответствующую Вашим требованиям, сделать это можно через систему управления сайтом.
+        Мы будем рады обсудить все ваши предложения и пожелания, и очень надеемся, что вы будете нашим постоянным 
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="sh-rt">&nbsp;</td>
+                  </tr>
+                </table>
+                <div class="cont-bot"></div>
+              </div>
+            <div class="clear"></div>
+            </div>
+        <div class="f-blank"></div>
+        </div>
+        <div class="wrap-footer">
+            <div id="footer">
+                <div class="info">
+                    <div class="tel">8 (925) <span>009 62 93</span></div>
+                    <div class="mail"><a href="mailto:your_mail@mail.ru">your_mail@mail.ru</a></div>
+                </div>
+                <div class="dev">
+                    <div class="copy">&copy; 2012 Интернет-магазин автоприцепов Atrailer.ru</div>
+                    <div class="design">Дизайн: <a target="_blank" href="http://aledesign.ru">aledesign.ru</a></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
