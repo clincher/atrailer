@@ -1,3 +1,4 @@
+{% load sitetree %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="ru">
     <head>
@@ -102,16 +103,9 @@
               </div>
               <div class="left-block">
                 {% block left_block %}
-                <ul id="lmenu">
-                    <li><a href="#"><span class="bot"><span class="bg">Каталог прицепов</span></span></a></li>
-                    <li><a href="#"><span class="bot"><span class="bg">Фаркопы</span></span></a></li>
-                    <li class="active"><a href="#"><span class="bot"><span class="bg">Комплектующие</span></span></a></li>
-                    <li><a href="#"><span class="bot"><span class="bg">Доставка</span></span></a></li>
-                    <li><a href="#"><span class="bot"><span class="bg">О компании</span></span></a></li>
-                    <li><a href="#"><span class="bot"><span class="bg">Где купить</span></span></a></li>
-                </ul>
-                <a href="#" class="zak-zv">Заказать звонок</a>
-                <a href="#" class="price">Скачать прайс</a>
+                    {% sitetree_menu from "left_menu" include "trunk" template "sitetree/left_menu.html" %}
+                    <a href="#" class="zak-zv">Заказать звонок</a>
+                    <a href="#" class="price">Скачать прайс</a>
                 {% endblock %}
               </div>
               <div class="right-block">
