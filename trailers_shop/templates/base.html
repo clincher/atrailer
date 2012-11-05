@@ -29,6 +29,7 @@
         <!--[if lte IE 7]>
             <link href="{{ STATIC_URL }}images/stylesie.css" rel="stylesheet" type="text/css" />
         <![endif]-->
+        {% block js %}{% endblock %}
     </head>
 
     <body>
@@ -104,7 +105,7 @@
               <div class="left-block">
                 {% block left_block %}
                     {% sitetree_menu from "left_menu" include "trunk" template "sitetree/left_menu.html" %}
-                    <a href="#" class="zak-zv">Заказать звонок</a>
+                    <a href="{% url request-callback %}" class="zak-zv">Заказать звонок</a>
                     <a href="#" class="price">Скачать прайс</a>
                 {% endblock %}
               </div>
@@ -118,6 +119,7 @@
                             <a href="javascript:scroll(0,0)" class="up">Наверх</a>
                             <div class="path"><a href="#">Главная</a> / Интернет-магазин</div>
                             <div class="content">
+                                {% block main_content %}
                                 <div class="product-main">
                                     <div class="name"><a href="#">Название модели 829450 (3,5 р-ж)</a></div>
                                     <div class="for-pic"><img src="{{ STATIC_URL }}images/prod-img.jpg" border="0" alt="" /></div>
@@ -150,6 +152,7 @@
                                     Информация размещена для примера, Вам необходимо заменить ее на собственную. Сайт наполнен тестовой информацией. Вам необходимо самостоятельно заменить ее на другую, соответствующую Вашим требованиям, сделать это можно через систему управления сайтом.Мы будем рады обсудить все ваши предложения и пожелания, и очень надеемся, что вы будете нашим постоянным клиентом. Вам необходимо самостоятельно заменить ее на другую, соответствующую Вашим требованиям, сделать это можно через систему управления сайтом.
         Мы будем рады обсудить все ваши предложения и пожелания, и очень надеемся, что вы будете нашим постоянным 
                                 </div>
+                                {% endblock %}
                             </div>
                         </div>
                     </td>

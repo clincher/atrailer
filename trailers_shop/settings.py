@@ -153,6 +153,7 @@ class Settings(LocalSettings):
         'trailers_shop.apps.customshop.address',
         'trailers_shop.apps.articles',
         'trailers_shop.apps.banners',
+        'trailers_shop.apps.callback',
     ]
 
     SHOP_SHIPPING_BACKENDS = [

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
+{% endblock %}
+
+{% block main_content %}
+
+    {% include "callback/form.html" %}
+
+{% endblock %}

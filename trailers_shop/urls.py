@@ -15,6 +15,7 @@ urlpatterns = patterns('',
 #    (r'^cart/', include('shop_simplevariations.urls')),
     url(r'^catalog/', include('shop_categories.urls')),
     (r'^', include('trailers_shop.apps.customshop.urls')),
+    (r'^callback/', include('trailers_shop.apps.callback.urls')),
 )
 
 if settings.DEBUG:
