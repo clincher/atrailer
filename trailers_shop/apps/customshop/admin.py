@@ -1,30 +1,47 @@
-from django.conf import settings
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.contenttypes import generic
 from shop.admin.orderadmin import OrderAdmin
-from shop.models import Order, Product
+from shop.models import Order
 from shop_categories.models import Category
 from shop_categories.admin import ProductCategoryAdmin
 
-from models import ProductImage
+
+from models import Trailer, Accessory
+from base_models import ProductImage
+
+#class ProductImageAdmin(admin.TabularInline):
+#    """
+#    this class is for set up product admin image classes through one point
+#    """
+#    extra = 1
 
 
-class ProductImageInline(admin.TabularInline):
+class NameSlug(admin.ModelAdmin):
+    """
+    this class is for set up all product admin classes through one point
+    """
+    prepopulated_fields = {"slug": ("name",)}
+
+
+class ProductImageInline(generic.GenericTabularInline):
     model = ProductImage
     extra = 1
 
 
-class CustomProductAdmin(admin.ModelAdmin):
-    class Media:
-#        form = ProductForm
-
-        js = (
-            'tiny_mce/tiny_mce.js',
-            'filebrowser/js/TinyMCEAdmin.js',
-        )
-
+class TrailerAdmin(NameSlug):
     inlines = [ProductImageInline,]
-    prepopulated_fields = {"slug": ("name",)}
+    class Media:
+        js = ('tiny_mce/tiny_mce.js',
+              'filebrowser/js/TinyMCEAdmin.js',)
+
+
+
+class AccessoryAdmin(NameSlug):
+    inlines = [ProductImageInline,]
+    class Media:
+        js = ('tiny_mce/tiny_mce.js',
+              'filebrowser/js/TinyMCEAdmin.js',)
 
 
 class MyOrderAdmin(OrderAdmin):
@@ -38,9 +55,10 @@ class MyOrderAdmin(OrderAdmin):
 
 
 admin.site.register(Category, ProductCategoryAdmin)
-admin.site.register(Product, CustomProductAdmin)
+admin.site.register(Trailer, TrailerAdmin)
+admin.site.register(Accessory, AccessoryAdmin)
 admin.site.unregister(Order)
 
-ORDER_MODEL = getattr(settings, 'SHOP_ORDER_MODEL', None)
-if not ORDER_MODEL:
-    admin.site.register(Order, MyOrderAdmin)
+#ORDER_MODEL = getattr(settings, 'SHOP_ORDER_MODEL', None)
+#if not ORDER_MODEL:
+admin.site.register(Order, MyOrderAdmin)

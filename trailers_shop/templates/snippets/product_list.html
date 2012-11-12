@@ -1,0 +1,16 @@
+{% for product in product_list %}
+    <div class="product-main">
+        <div class="name"><a href="{% url product_detail product.slug %}">{{ product.name }}</a></div>
+        <div class="for-pic"><img src="{{ product.logo }}" border="0" alt="" /></div>
+        <div class="note">
+            <div class="desc">
+                {{ product.desc }}
+            </div>
+            <div class="price">Цена: <span><strong>{{ product.price }}</strong> руб.</span></div>
+            <a href="#" class="buy">Заказать</a>
+            <a href="#" class="add">В корзину</a>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+{% endfor %}

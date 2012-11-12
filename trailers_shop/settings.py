@@ -104,6 +104,7 @@ class CommonSettings(DjangoDefaults):
         "django.core.context_processors.static",
         "django.core.context_processors.tz",
         "django.contrib.messages.context_processors.messages",
+        "trailers_shop.apps.customshop.context_processors.forms",
     ]
 
     LOGGING = {
@@ -131,7 +132,7 @@ class CommonSettings(DjangoDefaults):
     }
 
 
-from local_settings import LocalSettings
+from trailers_shop.local_settings import LocalSettings
 
 
 class Settings(LocalSettings):
@@ -142,10 +143,10 @@ class Settings(LocalSettings):
         'polymorphic',
         'shop',
         'south',
-        'sitetree',
         'tinymce',
         'treeadmin',
         'shop_categories',
+#        'configurableproduct',
         'django_extensions',
         # internal apps
         'trailers_shop.apps.common',
@@ -165,8 +166,8 @@ class Settings(LocalSettings):
     ]
 
     SHOP_ADDRESS_MODEL = 'trailers_shop.apps.customshop.address.models.Address'
-    SHOP_PRODUCT_MODEL = 'trailers_shop.apps.customshop.models.CustomProduct'
-    SHOP_CATEGORIES_CATEGORY_MODEL = 'trailers_shop.apps.customshop.models.category.Category'
+#    SHOP_PRODUCT_MODEL = ('trailers_shop.apps.customshop.base_models.CustomProduct', 'shop')
+    SHOP_CATEGORIES_CATEGORY_MODEL = 'trailers_shop.apps.customshop.categories.models.Category'
 
     if LocalSettings.DEBUG:
         DEBUG_TOOLBAR_PANELS = (
@@ -193,7 +194,7 @@ class Settings(LocalSettings):
         STATICFILES_DIRS = LocalSettings.STATICFILES_DIRS +\
                            (os.path.join(LocalSettings.PROJECT_ROOT, 'media'),)
     else:
-        FILES_URL = 'http://files.savvatrailers_shop.com'
+        FILES_URL = 'http://atrailers.ru'
         MEDIA_URL = FILES_URL + LocalSettings.MEDIA_URL
         STATIC_URL = FILES_URL + LocalSettings.STATIC_URL
 

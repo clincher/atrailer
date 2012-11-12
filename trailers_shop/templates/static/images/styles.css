@@ -2,10 +2,10 @@
 /* CSS Document */
 
 html, body {
-	margin:0px;
-	padding:0px;
+	margin:0;
+	padding:0;
 	position:relative;
-	height:100%;	
+	height:100%;
 }
 body {
 	text-align:left;
@@ -30,7 +30,7 @@ a.highslide:hover img {border:none}
 
 YMaps { color:#000; }
 
-h1,h2,h3,h4,h5,h6 { margin:0px; padding:12px 0; color:#0f4c9c; font-family:Arial, Helvetica, sans-serif;font-weight:normal}
+h1,h2,h3,h4,h5,h6 { margin:0; padding:12px 0; color:#0f4c9c; font-family:Arial, Helvetica, sans-serif;font-weight:normal}
 h1 { font-size:23px; padding:0 0 20px}
 h2 { font-size:20px}
 h3 { font-size:18px}
@@ -44,7 +44,7 @@ h5,h6 { font-size:11px}
 .wrap-header {background:url(bg-head.jpg) 0 0 repeat-x}
 #header {position:relative; height:72px; width:1010px; margin:0 auto}
 .logo {position:absolute; top:14px; left:19px; font:italic 12px Arial, Helvetica, sans-serif; color:#0f4c9c}
-.logo a img {border:none; display:block; margin:0 0 2px}
+.logo img {border:none; display:block; margin:0 0 2px}
 .cart {position:absolute; top:6px; right:21px; width:157px; font:normal 12px/150% Arial, Helvetica, sans-serif; color:#4c4c4c}
 .cart span.title {display:block; padding:0 0 3px; font-size:13px; color:#f96900}
 .cart span.title a {color:#f96900}
@@ -54,7 +54,19 @@ h5,h6 { font-size:11px}
 
 .wrap-block-top {position:relative; width:990px; margin:11px auto 0; padding:0 0 18px}
 .wrap-block-top .block-top {background:url(block-top.png) 0 0 no-repeat; height:132px}
-.wrap-block-top a.but {display:block; background:url(but.png) 0 0 no-repeat; width:180px; height:44px; position:absolute; z-index:1000; bottom:0; right:13px; margin:0}
+.wrap-block-top button.but {
+    display:block;
+    background:url(but.png) 0 0 no-repeat;
+    width:180px;
+    height:44px;
+    position:absolute;
+    z-index:1000;
+    bottom:0;
+    right:13px;
+    margin:0;
+    border: 0 none;
+    cursor: pointer;
+}
 .wrap-block-top .block-top .title-block {float:left; width:179px; height:34px; font:italic 16px/34px Arial, Helvetica, sans-serif; color:#FFF; padding:0 0 0 12px}
 #upm {padding:0; margin:0; float:left; list-style:none; font-size:0; line-height:0}
 #upm li {float:left; padding:0; margin:0}
@@ -62,13 +74,13 @@ h5,h6 { font-size:11px}
 #upm li a:hover {text-decoration:none; color:#0f4c9c; background:url(bg_a.jpg) 0 0 repeat-x}
 #upm li.active a {text-decoration:none; color:#0f4c9c; background:url(bg_a.jpg) 0 0 repeat-x}
 
-.wrap-form {padding:8px 0 0 12px}
+.wrap-form {padding:8px 0 0 12px; margin:0; float:left; vertical-align:top}
 .wrap-form .form-title {padding:13px 0 0; font:italic 13px Arial, Helvetica, sans-serif; color:#424242; float:left; width:194px}
-.wrap-form form {padding:0; margin:0; float:left; width:782px; vertical-align:top}
-.wrap-form form input {float:left; display:block; margin:7px 5px 0 0; padding:0; vertical-align:top}
-.wrap-form form span.wr {float:left; width:163px; padding:0; margin:0; font:normal 12px Arial, Helvetica, sans-serif; color:#000000}
-.wrap-form form span.wr span.title {display:block; font:bold 13px Arial, Helvetica, sans-serif; padding:0; color:#0f4c9c}
-.wrap-form form span.wr em {font-style:normal; display:inline-block; padding:5px 0 0}
+.wrap-form input {float:left; display:block; margin: 1px 5px 0 0; padding:0; vertical-align:top}
+.wrap-form span.wr {float:left; width:163px; padding:0; margin:0; font:normal 12px Arial, Helvetica, sans-serif; color:#000000}
+.wrap-form span.wr span.title {display:block; font:bold 13px Arial, Helvetica, sans-serif; padding:0; color:#0f4c9c}
+.wrap-form span.wr em {font-style:normal; display:inline-block; padding:5px 0 0}
+.wrap-form span.wr label {font-style:normal; display:block; padding:5px 0 0}
 
 .cont-box {width:1010px; margin:-20px auto 0; padding:0; zoom:1}
 .cont-box .icos {padding:0 0 0 21px; margin:0; height:57px; position:relative; z-index:1}

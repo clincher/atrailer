@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.views.generic import DeleteView, DetailView
+from django.views.generic import DeleteView, DetailView, FormView, ListView
 from shop.models.defaults.cartitem import CartItem
 from shop.util.address import assign_address_to_request
 from shop.views.checkout import CheckoutSelectionView
 from shop_categories.models import Category
 
-from forms import OrderExtraInfoForm
+from forms import OrderExtraInfoForm, TrailerSearchForm
 from signals import payment_instructions_email_notification
+from models import Trailer
 
 
 class MyCheckoutSelectionView(CheckoutSelectionView):
@@ -62,3 +63,44 @@ class CartItemDeleteView(DeleteView):
     model = CartItem
 
     success_url = '/cart/'
+
+
+class TrailerListView(ListView):
+    model = Trailer
+    template_name = 'base.html'
+    context_object_name = 'product_list'
+
+    def build_filter(self, form):
+        qs_filter = {}
+        data = form.cleaned_data
+        #length and capacity is a float and int, so it complex
+        if 0 < len(data['length']) < len(form.LENGTH_CHOICES):
+            if form.SHORT in data['length']:
+                qs_filter['length__lte'] = 3
+            if form.LONG in data['length']:
+                qs_filter['length__gte'] = 3
+        if (data['capacity']
+        and len(data['capacity']) < len(form.CAPACITY_CHOICES)):
+            if form.SMALL in data['capacity']:
+                qs_filter['capacity__lte'] = 8
+            if form.BIG in data['capacity']:
+                qs_filter['capacity__gte'] = 8
+        if 0 < len(data['availability_of_brakes']) < len(form.BRAKES_CHOICES):
+            if form.WITH_BRAKES in data['availability_of_brakes']:
+                qs_filter['availability_of_brakes'] = True
+            if form.NO_BRAKES in data['availability_of_brakes']:
+                qs_filter['availability_of_brakes'] = False
+        if 0 < len(data['number_axis']) < len(Trailer.NUMBER_AXIS_CHOICES):
+            qs_filter['number_axis__in'] = data['number_axis']
+        if (data['suspension']
+        and len(data['suspension']) < len(Trailer.SUSPENSION_CHOICES)):
+            qs_filter['suspension__in'] = data['suspension']
+        return qs_filter
+
+
+    def get_queryset(self):
+        trailer_search_form = TrailerSearchForm(self.request.GET or {})
+        result = super(TrailerListView, self).get_queryset()
+        if trailer_search_form.is_valid():
+            result.filter(**self.build_filter(trailer_search_form.cleaned_data))
+        return result

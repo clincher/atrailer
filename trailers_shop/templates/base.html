@@ -37,7 +37,7 @@
         <div id="wrap">
             <div class="wrap-header">
                 <div id="header">
-                    <div class="logo"><a href="#"><img src="{{ STATIC_URL }}images/logo.png" border="0" alt="" /></a>Интернет-магазин автоприцепов</div>
+                    <div class="logo">{% block logo %}<a href="{% url index %}"><img src="{{ STATIC_URL }}images/logo.png" border="0" alt="" /></a>{% endblock %}Интернет-магазин автоприцепов</div>
                     <div class="cart">
                         <span class="title"><a href="#">Корзина товаров</a></span>
                         Предметов в корзине: <a href="#">0 шт.</a> на сумму : <a href="#">0 руб.</a>
@@ -46,6 +46,7 @@
                 </div>
             </div>
             <div class="wrap-block-top">
+                <form action="{% url trailer-list %}" method="">
                 <div class="block-top">
                     <div class="title-block">Что перевозим:</div>
                     <ul id="upm">
@@ -60,48 +61,44 @@
                     <div class="clear"></div>
                     <div class="wrap-form">
                         <div class="form-title">Выберите критерии<br />подбора прицепа</div>
-                        <form action="" method="">
                             <span class="wr" style="width:170px;">
-                                <span class="title">Длина платформы:</span>
-                                <input type="checkbox" value="" /><em>от 1,5 до 3 метров</em><br clear="all" />
-                                <input type="checkbox" value="" /><em>от 3 до 6 метров</em>
+                                <span class="title">{{ trailer_search_form.length.label }}:</span>
+                                {{ trailer_search_form.length }}
                             </span>
                             <span class="wr" style="width:150px;">
-                                <span class="title">Количество осей:</span>
-                                <input type="checkbox" value="" /><em>Одноостный</em><br clear="all" />
-                                <input type="checkbox" value="" /><em>Двухостный</em>
+                                <span class="title">{{ trailer_search_form.number_axis.label }}:</span>
+                                {{ trailer_search_form.number_axis }}
                             </span>
                             <span class="wr" style="width:153px;">
-                                <span class="title">Подвеска:</span>
-                                <input type="checkbox" value="" /><em>Резино-жгутовая</em><br clear="all" />
-                                <input type="checkbox" value="" /><em>Рессорная</em>
+                                <span class="title">{{ trailer_search_form.suspension.label }}:</span>
+                                {{ trailer_search_form.suspension }}
                             </span>
                             <span class="wr" style="width:150px;">
-                                <span class="title">Тормоза на осях:</span>
-                                <input type="checkbox" value="" /><em>С тормозами</em><br clear="all" />
-                                <input type="checkbox" value="" /><em>Без тормозов</em>
+                                <span class="title">{{ trailer_search_form.availability_of_brakes.label }}:</span>
+                                {{ trailer_search_form.availability_of_brakes }}
                             </span>
                             <span class="wr" style="width:150px;">
-                                <span class="title">Грузоподъемность:</span>
-                                <input type="checkbox" value="" /><em>До 8 тон</em><br clear="all" />
-                                <input type="checkbox" value="" /><em>До 25 тон</em>
+                                <span class="title">{{ trailer_search_form.capacity.label }}:</span>
+                                {{ trailer_search_form.capacity }}
                             </span>
                             <div class="clear"></div>
-                        </form>
                     <div class="clear"></div>
                     </div>
                 <div class="clear"></div>
                 </div>
-            <a href="#" class="but"></a>
+{#                    <input type="button" src=>#}
+            <button class="but"></button>
+{#            <a href="#" class="but"></a>#}
+            </form>
             </div>
           <div class="cont-box">
-                <div class="icos"><img src="{{ STATIC_URL }}images/ico.png" alt="" border="0" usemap="#Map" />
-                  <map name="Map" id="Map">
-                    <area shape="rect" coords="1,0,27,26" href="#" />
-                    <area shape="rect" coords="42,0,67,26" href="#" />
-                    <area shape="rect" coords="83,0,108,26" href="#" />
-                  </map>
-              </div>
+{#                <div class="icos"><img src="{{ STATIC_URL }}images/ico.png" alt="" border="0" usemap="#Map" />#}
+{#                  <map name="Map" id="Map">#}
+{#                    <area shape="rect" coords="1,0,27,26" href="#" />#}
+{#                    <area shape="rect" coords="42,0,67,26" href="#" />#}
+{#                    <area shape="rect" coords="83,0,108,26" href="#" />#}
+{#                  </map>#}
+{#              </div>#}
               <div class="left-block">
                 {% block left_block %}
                     {% sitetree_menu from "left_menu" include "trunk" template "sitetree/left_menu.html" %}
@@ -120,39 +117,12 @@
                             <div class="path"><a href="#">Главная</a> / Интернет-магазин</div>
                             <div class="content">
                                 {% block main_content %}
-                                <div class="product-main">
-                                    <div class="name"><a href="#">Название модели 829450 (3,5 р-ж)</a></div>
-                                    <div class="for-pic"><img src="{{ STATIC_URL }}images/prod-img.jpg" border="0" alt="" /></div>
-                                    <div class="note">
-                                        <div class="desc">
-                                            Прицеп предназначен для перевозки различных грузов. Варианты исполнения возможны как тент с задним бортом, так и с...  Прицеп предназначен для перевозки различных грузов. Варианты исполнения возможны как тент с задним бортом, так и с...  Прицеп предназначен для перевозки различных грузов. Прицеп предназначен для перевозки различных грузов.
-                                        </div>
-                                        <div class="price">Цена: <span><strong>98.000</strong> руб.</span></div>
-                                        <a href="#" class="buy">Заказать</a>
-                                        <a href="#" class="add">В корзину</a>
-                                        <div class="clear"></div>
-                                    </div>
-                                <div class="clear"></div>
-                                </div>
-                                <div class="product-main">
-                                    <div class="name"><a href="#">Название модели 829450 (3,5 р-ж)</a></div>
-                                    <div class="for-pic"><img src="images/prod-img.jpg" border="0" alt="" /></div>
-                                    <div class="note">
-                                        <div class="desc">
-                                            Прицеп предназначен для перевозки различных грузов. Варианты исполнения возможны как тент с задним бортом, так и с...  Прицеп предназначен для перевозки различных грузов. Варианты исполнения возможны как тент с задним бортом, так и с...  Прицеп предназначен для перевозки различных грузов. Прицеп предназначен для перевозки различных грузов.
-                                        </div>
-                                        <div class="price">Цена: <span class="old"><strong>98.000</strong> руб.</span><span><strong>50.000</strong> руб.</span></div>
-                                        <a href="#" class="buy">Заказать</a>
-                                        <a href="#" class="nobuy">Нет в наличии</a>
-                                        <div class="clear"></div>
-                                    </div>
-                                <div class="clear"></div>
-                                </div>
+                                    {% include 'snippets/product_list.html' %}
+                                {% endblock %}
                                 <div class="text">
                                     Информация размещена для примера, Вам необходимо заменить ее на собственную. Сайт наполнен тестовой информацией. Вам необходимо самостоятельно заменить ее на другую, соответствующую Вашим требованиям, сделать это можно через систему управления сайтом.Мы будем рады обсудить все ваши предложения и пожелания, и очень надеемся, что вы будете нашим постоянным клиентом. Вам необходимо самостоятельно заменить ее на другую, соответствующую Вашим требованиям, сделать это можно через систему управления сайтом.
-        Мы будем рады обсудить все ваши предложения и пожелания, и очень надеемся, что вы будете нашим постоянным 
+                                    Мы будем рады обсудить все ваши предложения и пожелания, и очень надеемся, что вы будете нашим постоянным
                                 </div>
-                                {% endblock %}
                             </div>
                         </div>
                     </td>
@@ -173,7 +143,7 @@
                 </div>
                 <div class="dev">
                     <div class="copy">&copy; 2012 Интернет-магазин автоприцепов Atrailer.ru</div>
-                    <div class="design">Дизайн: <a target="_blank" href="http://aledesign.ru">aledesign.ru</a></div>
+                    <div class="design">Дизайн: <a rel="nofollow" target="_blank" href="http://aledesign.ru">aledesign.ru</a></div>
                 </div>
             </div>
         </div>
