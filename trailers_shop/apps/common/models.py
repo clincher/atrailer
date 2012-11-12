@@ -19,4 +19,4 @@ class ObjectMixin(models.Model):
 
 
 def upload_to(instance, file_name):
-    return '{0}s/{1}'.format(instance.__class__.__name__.lower(), file_name)
+    return u'{0}s/{1}'.format(instance.__class__.__name__.lower(), file_name)

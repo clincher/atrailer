@@ -14,12 +14,13 @@ class ProductImage(models.Model):
     alt = models.CharField(max_length=200,
         verbose_name=u'Описание изображения',
         help_text=u'не больше 200 символов и желательно не больше 16 слов')
-    src = models.ImageField(upload_to=upload_to, verbose_name=u'Изборажение')
+    src = models.ImageField(u'Изборажение', upload_to=upload_to)
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey()
 
     class Meta:
+        db_table = 'shop_productimage'
         ordering = ('id',)
 
     def __unicode__(self):
