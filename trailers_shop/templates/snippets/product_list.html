@@ -1,16 +1,59 @@
 {% for product in product_list %}
     <div class="product-main">
-        <div class="name"><a href="{% url product_detail product.slug %}">{{ product.name }}</a></div>
-        <div class="for-pic"><img src="{{ product.logo }}" border="0" alt="" /></div>
+        <div class="name">
+            <a href="{% url product_detail product.slug %}" title="{{ product.name }}">{{ product.name }}</a>
+        </div>
+        <div class="for-pic">
+            <img src="{{ product.logo.src.url }}" border="0" alt="{{ product.name }}" />
+        </div>
         <div class="note">
             <div class="desc">
-                {{ product.desc }}
+                {{ product.description }}
             </div>
-            <div class="price">Цена: <span><strong>{{ product.price }}</strong> руб.</span></div>
+            <div class="price">Цена: <span><strong>{{ product.unit_price }}</strong> руб.</span></div>
             <a href="#" class="buy">Заказать</a>
-            <a href="#" class="add">В корзину</a>
+            <a href="#" class="add" data-item-id="{{ product.pk }}" data-item-quantity="1">В корзину</a>
             <div class="clear"></div>
         </div>
         <div class="clear"></div>
     </div>
 {% endfor %}
+
+<script>
+    function getCookie(c_name) {
+        var i,x,y,ARRcookies=document.cookie.split(";");
+        for (i=0;i<ARRcookies.length;i++)
+        {
+            x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+            y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+            x=x.replace(/^\s+|\s+$/g,"");
+            if (x==c_name)
+            {
+                return unescape(y);
+            }
+        }
+    }
+
+    $(function() {
+
+        $('.add').click(function(e) {
+            e.preventDefault();
+            var el = $(this);
+            var xhr = $.ajax({
+                url: '{% url cart %}',
+                type: 'post',
+                data: {
+                    csrfmiddlewaretoken: getCookie('csrftoken'),
+                    add_item_id: el.attr('data-item-id'),
+                    add_item_quantity: el.attr('data-item-quantity')
+                }
+            });
+
+            xhr.done(function(response) {
+                console.log(response);
+                window.location.reload();
+            });
+        });
+
+    });
+</script>

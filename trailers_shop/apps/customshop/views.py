@@ -72,30 +72,37 @@ class TrailerListView(ListView):
 
     def build_filter(self, form):
         qs_filter = {}
-        data = form.cleaned_data
-        #length and capacity is a float and int, so it complex
-        if 0 < len(data['length']) < len(form.LENGTH_CHOICES):
-            if form.SHORT in data['length']:
-                qs_filter['length__lte'] = 3
-            if form.LONG in data['length']:
-                qs_filter['length__gte'] = 3
-        if (data['capacity']
-        and len(data['capacity']) < len(form.CAPACITY_CHOICES)):
-            if form.SMALL in data['capacity']:
-                qs_filter['capacity__lte'] = 8
-            if form.BIG in data['capacity']:
-                qs_filter['capacity__gte'] = 8
-        if 0 < len(data['availability_of_brakes']) < len(form.BRAKES_CHOICES):
-            if form.WITH_BRAKES in data['availability_of_brakes']:
-                qs_filter['availability_of_brakes'] = True
-            if form.NO_BRAKES in data['availability_of_brakes']:
-                qs_filter['availability_of_brakes'] = False
-        if 0 < len(data['number_axis']) < len(Trailer.NUMBER_AXIS_CHOICES):
-            qs_filter['number_axis__in'] = data['number_axis']
-        if (data['suspension']
-        and len(data['suspension']) < len(Trailer.SUSPENSION_CHOICES)):
-            qs_filter['suspension__in'] = data['suspension']
-        return qs_filter
+
+        if form.get('cleaned_data'):
+            data = form.cleaned_data
+            #length and capacity is a float and int, so it complex
+            if 0 < len(data['length']) < len(form.LENGTH_CHOICES):
+                if form.SHORT in data['length']:
+                    qs_filter['length__lte'] = 3
+                if form.LONG in data['length']:
+                    qs_filter['length__gte'] = 3
+            if (data['capacity']
+            and len(data['capacity']) < len(form.CAPACITY_CHOICES)):
+                if form.SMALL in data['capacity']:
+                    qs_filter['capacity__lte'] = 8
+                if form.BIG in data['capacity']:
+                    qs_filter['capacity__gte'] = 8
+            if 0 < len(data['availability_of_brakes']) < len(form.BRAKES_CHOICES):
+                if form.WITH_BRAKES in data['availability_of_brakes']:
+                    qs_filter['availability_of_brakes'] = True
+                if form.NO_BRAKES in data['availability_of_brakes']:
+                    qs_filter['availability_of_brakes'] = False
+            if 0 < len(data['number_axis']) < len(Trailer.NUMBER_AXIS_CHOICES):
+                qs_filter['number_axis__in'] = data['number_axis']
+            if (data['suspension']
+            and len(data['suspension']) < len(Trailer.SUSPENSION_CHOICES)):
+                qs_filter['suspension__in'] = data['suspension']
+            return qs_filter
+
+        else:
+            # TODO: вывести страницу "По вашему запросу ничего не найдено" или
+            # вывести список всех продуктов
+            return {}
 
 
     def get_queryset(self):
