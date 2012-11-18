@@ -4,7 +4,7 @@
     {% for object in object_list %}
         <div class="product-main">
             <div class="name">
-                <a href="{% url product_detail object.slug %}" title="{{ object.name }}">{{ object.name }}</a>
+                <a href="{% url accessory_detail object.slug %}" title="{{ object.name }}">{{ object.name }}</a>
             </div>
             <div class="for-pic">
                 <img src="{{ object.logo.src.url }}" border="0" alt="{{ object.name }}" />

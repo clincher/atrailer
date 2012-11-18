@@ -114,7 +114,17 @@ class TrailerListView(ListView):
         return result
 
 
+class TrailerDetailView(DetailView):
+    model = Trailer
+    template_name = 'shop/product_detail.html'
+
+
 class AccessoryListView(ListView):
     model = Accessory
     template_name = 'snippets/acessory_list.html'
 #    context_object_name = 'accessory_list'
+
+
+class AccessoryDetailView(DetailView):
+    model = Accessory
+    template_name = 'shop/accessory_detail.html'
