@@ -81,6 +81,13 @@ class Trailer(BaseProduct):
     similar = models.ManyToManyField('self', verbose_name=u'Похожие',
         null=True, blank=True)
 
+    class Meta:
+        verbose_name = u'Прицеп'
+        verbose_name_plural = u'Прицепы'
+
+    def __unicode__(self):
+        return u'{0}'.format(self.name)
+
     def _get_name_value(self, field_name):
         field = self._meta.get_field(field_name)
         value = result_value = getattr(self, field_name)
@@ -104,13 +111,6 @@ class Trailer(BaseProduct):
             u'- {0}: {1:g} кг'.format(*self._get_name_value('capacity')),
             u'- {0}: {1}'.format(*self._get_name_value('availability_of_brakes')),
         ]
-
-    class Meta:
-        verbose_name = u'Прицеп'
-        verbose_name_plural = u'Прицепы'
-
-    def __unicode__(self):
-        return u'{0}'.format(self.name)
 
 
 class Accessory(BaseProduct):

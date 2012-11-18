@@ -10,6 +10,7 @@ from shop_categories.models import Category
 from forms import OrderExtraInfoForm, TrailerSearchForm
 from signals import payment_instructions_email_notification
 from models import Trailer
+from trailers_shop.apps.customshop.models import Accessory
 
 
 class MyCheckoutSelectionView(CheckoutSelectionView):
@@ -67,8 +68,8 @@ class CartItemDeleteView(DeleteView):
 
 class TrailerListView(ListView):
     model = Trailer
-    template_name = 'base.html'
-    context_object_name = 'product_list'
+    template_name = 'snippets/product_list.html'
+#    context_object_name = 'product_list'
 
     def build_filter(self, form):
         qs_filter = {}
@@ -111,3 +112,9 @@ class TrailerListView(ListView):
         if trailer_search_form.is_valid():
             result.filter(**self.build_filter(trailer_search_form.cleaned_data))
         return result
+
+
+class AccessoryListView(ListView):
+    model = Accessory
+    template_name = 'snippets/acessory_list.html'
+#    context_object_name = 'accessory_list'

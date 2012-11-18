@@ -10,14 +10,13 @@
                 <img src="{{ object.logo.src.url }}" border="0" alt="{{ object.name }}" />
             </div>
             <div class="note">
-                <ul class="description">
-                    {% for prop in object.get_property_list %}
-                        <li>{{ prop }}</li>
-                    {% endfor %}
-                    <br clear="all">
-                </ul>
-
                 <div class="desc">
+                    <p>Подходит к:
+                    {% for item in object.recent.all %}
+                        <a href="{% url product_detail item.slug %}" title="{{ item.name }}">{{ item.name }}</a>
+                        {% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                    </p>
                     {{ object.description }}
                 </div>
 
