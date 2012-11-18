@@ -123,6 +123,7 @@ a.price:hover  {background:url(price.png) 0 0 no-repeat}
 .content .product-main .name {padding:0 0 20px 5px; font:normal 23px Arial, Helvetica, sans-serif; color:#0f4c9c}
 .content .product-main .name a {color:#0f4c9c}
 .content .product-main .for-pic {float:left; text-align:center; width:288px; margin:0 15px 0 0}
+.content .product-main .for-pic img {max-width:288px;}
 .content .product-main .note {float:left; width:445px; padding:0; margin:-3px 0 0; zoom:1}
 .content .product-main .note .desc {padding:0 0 15px; font:normal 12px/150% Arial, Helvetica, sans-serif; color:#585858}
 .content .product-main .note .price {padding:0 0 16px; font:normal 14px Arial, Helvetica, sans-serif; color:#646464}

@@ -7,9 +7,17 @@
             <img src="{{ product.logo.src.url }}" border="0" alt="{{ product.name }}" />
         </div>
         <div class="note">
+            <ul class="description">
+                {% for prop in product.get_property_list %}
+                    <li>{{ prop }}</li>
+                {% endfor %}
+                <br clear="all">
+            </ul>
+
             <div class="desc">
                 {{ product.description }}
             </div>
+
             <div class="price">Цена: <span><strong>{{ product.unit_price }}</strong> руб.</span></div>
             <a href="#" class="buy">Заказать</a>
             <a href="#" class="add" data-item-id="{{ product.pk }}" data-item-quantity="1">В корзину</a>

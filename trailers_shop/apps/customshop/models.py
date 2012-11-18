@@ -60,26 +60,50 @@ class Trailer(BaseProduct):
     UNIAXIAL = 1
     BIAXIAL = 2
     NUMBER_AXIS_CHOICES = (
-        (UNIAXIAL, 'одноосный'),
-        (BIAXIAL, 'двухосный')
+        (UNIAXIAL, u'одноосный'),
+        (BIAXIAL, u'двухосный')
     )
 
     SUSPENSION_CHOICES = (
-        (1, 'Резино-жгутовая'),
-        (2, 'Рессорная')
+        (1, u'резино-жгутовая'),
+        (2, u'рессорная')
     )
 
 
-    length = models.FloatField('Длина платформы', null=False, blank=False)
-    number_axis = models.PositiveSmallIntegerField('Количество осей',
+    length = models.FloatField(u'Длина платформы', null=False, blank=False)
+    number_axis = models.PositiveSmallIntegerField(u'Количество осей',
         choices=NUMBER_AXIS_CHOICES, null=False, blank=False)
-    suspension = models.PositiveSmallIntegerField('Подвеска',
+    suspension = models.PositiveSmallIntegerField(u'Подвеска',
         choices=SUSPENSION_CHOICES, null=False, blank=False)
-    capacity = models.FloatField('Грузоподъемность', null=False, blank=False)
-    availability_of_brakes = models.BooleanField('наличие тормозов')
+    capacity = models.FloatField(u'Грузоподъемность', null=False, blank=False)
+    availability_of_brakes = models.BooleanField(u'Наличие тормозов')
 
-    similar = models.ManyToManyField('self', verbose_name='похожие',
+    similar = models.ManyToManyField('self', verbose_name=u'Похожие',
         null=True, blank=True)
+
+    def _get_name_value(self, field_name):
+        field = self._meta.get_field(field_name)
+        value = result_value = getattr(self, field_name)
+
+        if field.choices:
+            result_value = [(x) for x in field.get_choices() if x[0] == value][0][1]
+
+        if field.get_internal_type() == 'BooleanField':
+            if value == True:
+                result_value = u'есть'
+            else:
+                result_value = u'нет'
+
+        return field.verbose_name, result_value
+
+    def get_property_list(self):
+        return [
+            u'- {0}: {1:g} м'.format(*self._get_name_value('length')),
+            u'- {0}: {1}'.format(*self._get_name_value('number_axis')),
+            u'- {0}: {1}'.format(*self._get_name_value('suspension')),
+            u'- {0}: {1:g} кг'.format(*self._get_name_value('capacity')),
+            u'- {0}: {1}'.format(*self._get_name_value('availability_of_brakes')),
+        ]
 
     class Meta:
         verbose_name = u'Прицеп'
