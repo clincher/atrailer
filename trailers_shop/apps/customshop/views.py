@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.views.generic import DeleteView, DetailView, FormView, ListView
-from shop.models.defaults.cartitem import CartItem
+from django.views.generic import DeleteView
 from shop.util.address import assign_address_to_request
 from shop.views.checkout import CheckoutSelectionView
+from shop.views import ShopListView
+from shop.models import CartItem
 from shop_categories.models import Category
 
 from forms import OrderExtraInfoForm, TrailerSearchForm
@@ -65,10 +66,32 @@ class CartItemDeleteView(DeleteView):
     success_url = '/cart/'
 
 
-class TrailerListView(ListView):
+class CustomCategoryShopListView(ShopListView):
+    paginate_by = 10
     model = Trailer
     template_name = 'base.html'
     context_object_name = 'product_list'
+    category = None
+
+    def get_queryset(self):
+        try:
+            self.category = Category.objects.get(path=self.kwargs['path'])
+        except (Category.DoesNotExist, KeyError):
+            return super(CustomCategoryShopListView, self).get_queryset()
+        categories = [self.category.id] + list(
+            self.category.children.values_list('id', flat=True))
+        return super(CustomCategoryShopListView, self).get_queryset().filter(
+            category__in=categories).distinct()
+
+    def get_context_data(self, **kwargs):
+        if self.category:
+            kwargs['category'] = self.category
+        return super(CustomCategoryShopListView,
+                     self).get_context_data(**kwargs)
+
+
+class TrailerListView(CustomCategoryShopListView):
+    model = Trailer
 
     def build_filter(self, form):
         qs_filter = {}
@@ -80,7 +103,7 @@ class TrailerListView(ListView):
             if form.LONG in data['length']:
                 qs_filter['length__gte'] = 3
         if (data['capacity']
-        and len(data['capacity']) < len(form.CAPACITY_CHOICES)):
+                and len(data['capacity']) < len(form.CAPACITY_CHOICES)):
             if form.SMALL in data['capacity']:
                 qs_filter['capacity__lte'] = 8
             if form.BIG in data['capacity']:
@@ -93,14 +116,13 @@ class TrailerListView(ListView):
         if 0 < len(data['number_axis']) < len(Trailer.NUMBER_AXIS_CHOICES):
             qs_filter['number_axis__in'] = data['number_axis']
         if (data['suspension']
-        and len(data['suspension']) < len(Trailer.SUSPENSION_CHOICES)):
+                and len(data['suspension']) < len(Trailer.SUSPENSION_CHOICES)):
             qs_filter['suspension__in'] = data['suspension']
         return qs_filter
 
-
     def get_queryset(self):
         trailer_search_form = TrailerSearchForm(self.request.GET or {})
-        result = super(TrailerListView, self).get_queryset()
+        qs = super(TrailerListView, self).get_queryset()
         if trailer_search_form.is_valid():
-            result.filter(**self.build_filter(trailer_search_form.cleaned_data))
-        return result
+            return qs.filter(**self.build_filter(trailer_search_form))
+        return qs

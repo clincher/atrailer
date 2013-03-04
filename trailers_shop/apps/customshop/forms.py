@@ -45,22 +45,22 @@ class CustomCheckboxSelectMultiple(CheckboxSelectMultiple):
         return mark_safe(u'\n'.join(output))
 
 class TrailerSearchForm(forms.Form):
-    SHORT = 1
-    LONG = 2
+    SHORT = u'1'
+    LONG = u'2'
     LENGTH_CHOICES = (
         (SHORT, 'от 1,5 до 3 метров'),
         (LONG, 'от 3 до 6 метров'),
     )
 
-    SMALL = 1
-    BIG = 2
+    SMALL = u'1'
+    BIG = u'2'
     CAPACITY_CHOICES = (
         (SMALL, 'до 8 тонн'),
         (BIG, 'от 8 тонн'),
     )
 
-    NO_BRAKES = 0
-    WITH_BRAKES = 1
+    NO_BRAKES = u'0'
+    WITH_BRAKES = u'1'
     BRAKES_CHOICES = (
         (NO_BRAKES, 'без тормозов'),
         (WITH_BRAKES, 'с тормозами'),

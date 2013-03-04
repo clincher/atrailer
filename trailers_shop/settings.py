@@ -105,6 +105,7 @@ class CommonSettings(DjangoDefaults):
         "django.core.context_processors.tz",
         "django.contrib.messages.context_processors.messages",
         "trailers_shop.apps.customshop.context_processors.forms",
+        "trailers_shop.apps.customshop.context_processors.categories",
     ]
 
     LOGGING = {

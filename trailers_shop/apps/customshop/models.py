@@ -11,8 +11,8 @@ from trailers_shop.apps.customshop.signals import confirmed_email_notification
 
 
 class ProductImage(models.Model):
-    alt = models.CharField(max_length=200,
-        verbose_name=u'Описание изображения',
+    alt = models.CharField(
+        max_length=200, verbose_name=u'Описание изображения',
         help_text=u'не больше 200 символов и желательно не больше 16 слов')
     src = models.ImageField(u'Изборажение', upload_to=upload_to)
     content_type = models.ForeignKey(ContentType)
@@ -48,7 +48,7 @@ class BaseProduct(Product, ObjectMixin):
 
     @models.permalink
     def get_absolute_url(self):
-        return 'product_detail', (), {'slug':self.slug}
+        return 'product_detail', (), {'slug': self.slug}
 
 #    def save(self, *args, **kwargs):
 #        super(BaseProduct, self).save(*args, **kwargs)
@@ -69,17 +69,16 @@ class Trailer(BaseProduct):
         (2, 'Рессорная')
     )
 
-
     length = models.FloatField('Длина платформы', null=False, blank=False)
-    number_axis = models.PositiveSmallIntegerField('Количество осей',
-        choices=NUMBER_AXIS_CHOICES, null=False, blank=False)
-    suspension = models.PositiveSmallIntegerField('Подвеска',
-        choices=SUSPENSION_CHOICES, null=False, blank=False)
+    number_axis = models.PositiveSmallIntegerField(
+        'Количество осей', choices=NUMBER_AXIS_CHOICES, null=False, blank=False)
+    suspension = models.PositiveSmallIntegerField(
+        'Подвеска', choices=SUSPENSION_CHOICES, null=False, blank=False)
     capacity = models.FloatField('Грузоподъемность', null=False, blank=False)
     availability_of_brakes = models.BooleanField('наличие тормозов')
 
-    similar = models.ManyToManyField('self', verbose_name='похожие',
-        null=True, blank=True)
+    similar = models.ManyToManyField(
+        'self', verbose_name='похожие', null=True, blank=True)
 
     class Meta:
         verbose_name = u'Прицеп'
@@ -91,12 +90,12 @@ class Trailer(BaseProduct):
 
 class Accessory(BaseProduct):
     """Master data: info about product"""
-    recent = models.ManyToManyField(Trailer, verbose_name='подходит к',
-        related_name='accessories', null=True, blank=True)
+    recent = models.ManyToManyField(
+        Trailer, verbose_name='подходит к', related_name='accessories',
+        null=True, blank=True)
 
     class Meta:
-        verbose_name = u'Аксессуар'
-        verbose_name_plural = u'Аксессуары'
+        verbose_name, verbose_name_plural = u'Аксессуар', u'Аксессуары'
 
     def __unicode__(self):
         return u'{0}'.format(self.name)

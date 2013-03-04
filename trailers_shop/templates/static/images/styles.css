@@ -70,7 +70,7 @@ h5,h6 { font-size:11px}
 .wrap-block-top .block-top .title-block {float:left; width:179px; height:34px; font:italic 16px/34px Arial, Helvetica, sans-serif; color:#FFF; padding:0 0 0 12px}
 #upm {padding:0; margin:0; float:left; list-style:none; font-size:0; line-height:0}
 #upm li {float:left; padding:0; margin:0}
-#upm li a {display:block; padding:0 16px; cursor:pointer; font:bold 13px/34px Arial, Helvetica, sans-serif; color:#FFF; text-decoration:underline}
+#upm li a {display:block; padding:0 10px; cursor:pointer; font:bold 13px/34px Arial, Helvetica, sans-serif; color:#FFF; text-decoration:underline}
 #upm li a:hover {text-decoration:none; color:#0f4c9c; background:url(bg_a.jpg) 0 0 repeat-x}
 #upm li.active a {text-decoration:none; color:#0f4c9c; background:url(bg_a.jpg) 0 0 repeat-x}
 

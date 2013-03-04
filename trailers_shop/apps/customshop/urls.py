@@ -1,16 +1,15 @@
 #-*- coding: utf-8 -*-
 from django.conf.urls import patterns, include, url
-from django.views.generic import ListView, TemplateView
+from django.views.generic import TemplateView
 from shop.views.cart import CartDetails, CartItemDetail
-from shop.views.checkout import (ThankYouView, ShippingBackendRedirectView,
-    PaymentBackendRedirectView)
+from shop.views.checkout import (
+    ThankYouView, ShippingBackendRedirectView, PaymentBackendRedirectView)
 from shop.views.order import OrderListView, OrderDetailView
 from shop.views.product import ProductDetailView
-#from shop_simplecategories.views import CategoryDetailView
 
-from trailers_shop.apps.customshop.models import Trailer
-from trailers_shop.apps.customshop.views import (MyCheckoutSelectionView,
-    CartItemDeleteView, TrailerListView)
+from trailers_shop.apps.customshop.views import (
+    MyCheckoutSelectionView, CartItemDeleteView, TrailerListView,
+    CustomCategoryShopListView)
 
 
 urlpatterns = patterns('',
@@ -35,12 +34,16 @@ urlpatterns = patterns('',
 #        ),
 #        name='product_list'
 #    ),
-    url(r'^trailers/$',
+    url(r'^catalog/(?P<path>[0-9A-Za-z-//]+)/page(?P<page>[0-9]+)/$',
+        CustomCategoryShopListView.as_view(),
+        name='product_list'),
+    url(r'^catalog/(?P<path>[0-9A-Za-z-//]+)/$',
+        CustomCategoryShopListView.as_view(),
+        name='product_list'),
+    url(r'^catalog/$',
         TrailerListView.as_view(),
-        name='trailer-list'
-    ),
-
-    url(r'^trailers/(?P<slug>[0-9A-Za-z-_.//]+)$',
+        name='trailer-list'),
+    url(r'^catalog/(?P<slug>[0-9A-Za-z-_.//]+)$',
         ProductDetailView.as_view(),
         name='product_detail'
     ),
@@ -61,11 +64,11 @@ urlpatterns = patterns('',
         name='cart_item_add'
     ),
     url(r'^cart/$', # GET
-        CartDetails.as_view(template_name="customshop/cart.html"),
+        CartDetails.as_view(),
         name='cart'
     ),
     url(r'^cart/update/$',
-        CartDetails.as_view(action='put', template_name="customshop/cart.html"),
+        CartDetails.as_view(action='put'),
         name='cart_update'
     ),
     # CartItems
@@ -76,7 +79,7 @@ urlpatterns = patterns('',
     # Checkout
     url(r'^checkout/$',
         MyCheckoutSelectionView.as_view(
-            template_name="customshop/selection.html"
+#            template_name="customshop/selection.html"
         ),
         name='checkout_selection' # First step of the checkout process
     ),
