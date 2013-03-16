@@ -87,6 +87,30 @@ class Trailer(BaseProduct):
     def __unicode__(self):
         return u'{0}'.format(self.name)
 
+    def _get_name_value(self, field_name):
+        field = self._meta.get_field(field_name)
+        value = result_value = getattr(self, field_name)
+
+        if field.choices:
+            result_value = [(x) for x in field.get_choices() if x[0] == value][0][1]
+
+        if field.get_internal_type() == 'BooleanField':
+            if value == True:
+                result_value = u'есть'
+            else:
+                result_value = u'нет'
+
+        return field.verbose_name, result_value
+
+    def get_property_list(self):
+        return [
+            u'- {0}: {1:g} м'.format(*self._get_name_value('length')),
+            u'- {0}: {1}'.format(*self._get_name_value('number_axis')),
+            u'- {0}: {1}'.format(*self._get_name_value('suspension')),
+            u'- {0}: {1:g} кг'.format(*self._get_name_value('capacity')),
+            u'- {0}: {1}'.format(*self._get_name_value('availability_of_brakes')),
+        ]
+
 
 class Accessory(BaseProduct):
     """Master data: info about product"""

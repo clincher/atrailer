@@ -7,8 +7,9 @@ from shop.views.checkout import (
 from shop.views.order import OrderListView, OrderDetailView
 from shop.views.product import ProductDetailView
 
-from trailers_shop.apps.customshop.views import (
-    MyCheckoutSelectionView, CartItemDeleteView, TrailerListView,
+from trailers_shop.apps.customshop.models import Trailer
+from trailers_shop.apps.customshop.views import (MyCheckoutSelectionView,
+    CartItemDeleteView, TrailerListView, AccessoryListView, AccessoryDetailView,
     CustomCategoryShopListView)
 
 
@@ -47,6 +48,16 @@ urlpatterns = patterns('',
         ProductDetailView.as_view(),
         name='product_detail'
     ),
+    # Accessories
+    url(r'^accessories/$',
+        AccessoryListView.as_view(),
+        name='accessory-list'
+    ),
+    url(r'^accessories/(?P<slug>[0-9A-Za-z-_.//]+)$',
+        AccessoryDetailView.as_view(),
+        name='accessory_detail'
+    ),
+    # Payment stuff
     (r'^pay/', include('shop.payment.urls')),
     (r'^ship/', include('shop.shipping.urls')),
 

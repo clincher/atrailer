@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView, DetailView, FormView, ListView
+from shop.models.defaults.cartitem import CartItem
 from shop.util.address import assign_address_to_request
 from shop.views.checkout import CheckoutSelectionView
 from shop.views import ShopListView
@@ -10,7 +11,7 @@ from shop_categories.models import Category
 
 from forms import OrderExtraInfoForm, TrailerSearchForm
 from signals import payment_instructions_email_notification
-from models import Trailer
+from models import Trailer, Accessory
 
 
 class MyCheckoutSelectionView(CheckoutSelectionView):
@@ -126,3 +127,14 @@ class TrailerListView(CustomCategoryShopListView):
         if trailer_search_form.is_valid():
             return qs.filter(**self.build_filter(trailer_search_form))
         return qs
+
+
+class AccessoryListView(ListView):
+    model = Accessory
+    template_name = 'snippets/acessory_list.html'
+#    context_object_name = 'accessory_list'
+
+
+class AccessoryDetailView(DetailView):
+    model = Accessory
+    template_name = 'shop/accessory_detail.html'

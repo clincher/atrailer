@@ -7,8 +7,7 @@ from shop_categories.models import Category
 from shop_categories.admin import ProductCategoryAdmin
 
 
-from models import Trailer, Accessory
-from base_models import ProductImage
+from models import Trailer, Accessory, ProductImage
 
 #class ProductImageAdmin(admin.TabularInline):
 #    """
