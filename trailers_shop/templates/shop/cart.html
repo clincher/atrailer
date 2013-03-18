@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block main_content %}
-    <div style="font-size:16px; color:#414141; text-transform:uppercase;">Моя корзина</div>
+    <div class="cart-header">Моя корзина</div>
     {% if cart_items %}
         <form method="post" action="{% url cart_update %}">
             {% csrf_token %}
@@ -61,7 +61,7 @@
             {% csrf_token %}
             <p><input type="submit" value="Очистить корзину"/></p>
         </form>
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="cart-table">
             <tbody>
             <tr>
                 <td class="forminfo" valign="top">
@@ -69,13 +69,12 @@
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tbody>
                         <tr>
-                            <td align="left" style="font-size:14px;" valign="middle" height="30"></td><td align="right" style="font-size:14px;"></td>
+                            <td align="left" class="cart-cell" valign="middle" height="30"></td>
+                            <td align="right" class="cart-cell"></td>
                         </tr>
                         <tr>
-                            <td align="left" style="border-bottom:1px dotted #FF0000; font-size:14px; font-weight:bold; color:#F00;">ИТОГО:</td>
-                            <td align="right" style="border-bottom:1px dotted #FF0000; font-size:14px; font-weight:bold; color:#F00;">
-                                {{cart.total_price}} р.
-                            </td>
+                            <td align="left" class="cart-cell cart-cell-total">ИТОГО:</td>
+                            <td align="right" class="cart-cell cart-cell-total">{{cart.total_price}} р.</td>
                         </tr>
                         <tr>
                             <td colspan="2" height="90" valign="middle" align="center" class="submit">

@@ -5,13 +5,13 @@ Werkzeug
 django-classy-tags==0.3.4.1
 django-debug-toolbar
 django-extensions
-django-filebrowser
-django-mptt==0.5.4
+django-filebrowser==3.5.1
+django-mptt==0.5.5
 django-polymorphic==0.2
-django-shop==0.1.1
+django-shop==0.1.2
 django-shop-categories==0.8.beta.2
 django-sitetree==0.9.1
-django-tinymce==1.5.1b2
+django-tinymce==1.5.1b4
 -e git+git@github.com:clincher/django-treeadmin.git#egg=treeadmin
 django-classbasedsettings
 django-singletons
@@ -19,3 +19,4 @@ django-shop-configurableproduct
 ipython
 sorl-thumbnail==11.12
 wsgiref
+django-grappelli

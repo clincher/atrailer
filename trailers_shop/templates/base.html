@@ -8,24 +8,23 @@
         <meta name="keywords" content="{$page.keywords}" />
         <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
         <title>{% block title %}Интернет-магазин автоприцепов{% endblock %}</title>
-        <link href="{{ STATIC_URL }}images/styles.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="{{ STATIC_URL }}images/jquery-1.6.4.min.js"></script>
-        <!--<script type="text/javascript">
-            $(document).ready(function() {
-                $('.wrap-block-top').css('height', 20);
-                $('.block-top').hide();
-                $('a.but').toggle(function() {
-                    $('.block-top').slideDown(1000);
-                    $('.wrap-block-top').css('height', 132);
-                    return false;   
-                }, function() {
-                    $('.block-top').slideUp(1000, function(){
-                        $('.wrap-block-top').css('height', 20);     
-                    });
-                    return false;
-                });
-            });
-        </script>-->
+        <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" type="text/css" />
+{#        <!--<script type="text/javascript">#}
+{#            $(document).ready(function() {#}
+{#                $('.wrap-block-top').css('height', 20);#}
+{#                $('.block-top').hide();#}
+{#                $('a.but').toggle(function() {#}
+{#                    $('.block-top').slideDown(1000);#}
+{#                    $('.wrap-block-top').css('height', 132);#}
+{#                    return false;   #}
+{#                }, function() {#}
+{#                    $('.block-top').slideUp(1000, function(){#}
+{#                        $('.wrap-block-top').css('height', 20);     #}
+{#                    });#}
+{#                    return false;#}
+{#                });#}
+{#            });#}
+{#        </script>-->#}
         <!--[if lte IE 7]>
             <link href="{{ STATIC_URL }}images/stylesie.css" rel="stylesheet" type="text/css" />
         <![endif]-->
@@ -47,7 +46,7 @@
                     <div class="title-block">Что перевозим:</div>
                     <ul id="upm">
                         {% for cat in categories %}
-                            <li><a href="{% url product_list cat.path %}">{{ cat.name }}</a></li>
+                            <li {% if cat == category %}class="active"{% endif %}><a href="{% url product_list cat.path %}">{{ cat.name }}</a></li>
                         {% endfor %}
                     </ul>
                     <div class="clear"></div>
@@ -106,9 +105,7 @@
                             <a href="javascript:scroll(0,0)" class="up">Наверх</a>
                             <div class="path"><a href="{% url index %}">Главная</a> / Интернет-магазин</div>
                             <div class="content">
-                                {% block main_content %}
-
-                                {% endblock %}
+                                {% block main_content %}{% endblock %}
 {#                                <div class="text">#}
 {#                                    Информация размещена для примера, Вам необходимо заменить ее на собственную. Сайт наполнен тестовой информацией. Вам необходимо самостоятельно заменить ее на другую, соответствующую Вашим требованиям, сделать это можно через систему управления сайтом.Мы будем рады обсудить все ваши предложения и пожелания, и очень надеемся, что вы будете нашим постоянным клиентом. Вам необходимо самостоятельно заменить ее на другую, соответствующую Вашим требованиям, сделать это можно через систему управления сайтом.#}
 {#                                    Мы будем рады обсудить все ваши предложения и пожелания, и очень надеемся, что вы будете нашим постоянным#}
@@ -137,6 +134,10 @@
                 </div>
             </div>
         </div>
-        {% block js %}{% endblock %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.4.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/site.js"></script>
+        {% block js %}
+        {% endblock %}
     </body>
 </html>

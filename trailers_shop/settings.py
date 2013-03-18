@@ -83,6 +83,7 @@ class CommonSettings(DjangoDefaults):
 
     INSTALLED_APPS = [
         'filebrowser',
+        'grappelli',
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
@@ -108,6 +109,8 @@ class CommonSettings(DjangoDefaults):
         "trailers_shop.apps.customshop.context_processors.categories",
     ]
 
+    TINYMCE_JS_URL = STATIC_URL + \
+                     'grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js'
     LOGGING = {
         'version': 1,
         'disable_existing_loggers': False,

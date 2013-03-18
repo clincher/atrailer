@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
+from django.template.defaultfilters import yesno
 from mptt.fields import TreeForeignKey
 from shop.models.productmodel import Product
 from shop.order_signals import completed
@@ -69,16 +70,18 @@ class Trailer(BaseProduct):
         (2, 'Рессорная')
     )
 
-    length = models.FloatField('Длина платформы', null=False, blank=False)
+    length = models.FloatField(
+        u'Длина платформы', null=False, blank=False, help_text=u'м')
     number_axis = models.PositiveSmallIntegerField(
-        'Количество осей', choices=NUMBER_AXIS_CHOICES, null=False, blank=False)
+        u'Количество осей', choices=NUMBER_AXIS_CHOICES, null=False, blank=False)
     suspension = models.PositiveSmallIntegerField(
-        'Подвеска', choices=SUSPENSION_CHOICES, null=False, blank=False)
-    capacity = models.FloatField('Грузоподъемность', null=False, blank=False)
-    availability_of_brakes = models.BooleanField('наличие тормозов')
+        u'Подвеска', choices=SUSPENSION_CHOICES, null=False, blank=False)
+    capacity = models.FloatField(
+        u'Грузоподъемность', null=False, blank=False, help_text=u'тонн')
+    availability_of_brakes = models.BooleanField(u'Наличие тормозов')
 
     similar = models.ManyToManyField(
-        'self', verbose_name='похожие', null=True, blank=True)
+        'self', verbose_name=u'похожие', null=True, blank=True)
 
     class Meta:
         verbose_name = u'Прицеп'
@@ -87,28 +90,27 @@ class Trailer(BaseProduct):
     def __unicode__(self):
         return u'{0}'.format(self.name)
 
-    def _get_name_value(self, field_name):
+    def get_property(self, format, field_name):
         field = self._meta.get_field(field_name)
-        value = result_value = getattr(self, field_name)
+        args = [field.verbose_name]
 
         if field.choices:
-            result_value = [(x) for x in field.get_choices() if x[0] == value][0][1]
-
-        if field.get_internal_type() == 'BooleanField':
-            if value == True:
-                result_value = u'есть'
-            else:
-                result_value = u'нет'
-
-        return field.verbose_name, result_value
+            args.append(getattr(self, 'get_' + field_name + '_display')())
+        elif issubclass(field.__class__, models.BooleanField):
+            args.append(yesno(getattr(self, field_name), u'есть,нету'))
+        else:
+            args.append(getattr(self, field_name))
+        if field.help_text:
+            args.append(field.help_text)
+        return format.format(*args)
 
     def get_property_list(self):
-        return [
-            u'- {0}: {1:g} м'.format(*self._get_name_value('length')),
-            u'- {0}: {1}'.format(*self._get_name_value('number_axis')),
-            u'- {0}: {1}'.format(*self._get_name_value('suspension')),
-            u'- {0}: {1:g} кг'.format(*self._get_name_value('capacity')),
-            u'- {0}: {1}'.format(*self._get_name_value('availability_of_brakes')),
+        return [self.get_property(*args) for args in
+                (u'- {0}: {1:g} {2}', 'length'),
+                (u'- {0}: {1}', 'number_axis'),
+                (u'- {0}: {1}', 'suspension'),
+                (u'- {0}: {1:g} {2}', 'capacity'),
+                (u'- {0}: {1}', 'availability_of_brakes')
         ]
 
 

@@ -31,7 +31,7 @@ class ProductImageInline(generic.GenericTabularInline):
 class TrailerAdmin(NameSlug):
     inlines = [ProductImageInline,]
     class Media:
-        js = ('tiny_mce/tiny_mce.js',
+        js = ('grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
               'filebrowser/js/TinyMCEAdmin.js',)
 
 
@@ -39,7 +39,7 @@ class TrailerAdmin(NameSlug):
 class AccessoryAdmin(NameSlug):
     inlines = [ProductImageInline,]
     class Media:
-        js = ('tiny_mce/tiny_mce.js',
+        js = ('grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
               'filebrowser/js/TinyMCEAdmin.js',)
 
 

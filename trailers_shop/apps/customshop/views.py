@@ -70,7 +70,7 @@ class CartItemDeleteView(DeleteView):
 class CustomCategoryShopListView(ShopListView):
     paginate_by = 10
     model = Trailer
-    template_name = 'base.html'
+    template_name = 'customshop/product_list.html'
     context_object_name = 'product_list'
     category = None
 
@@ -129,9 +129,9 @@ class TrailerListView(CustomCategoryShopListView):
         return qs
 
 
-class AccessoryListView(ListView):
+class AccessoryListView(CustomCategoryShopListView):
     model = Accessory
-    template_name = 'snippets/acessory_list.html'
+    template_name = 'customshop/acessory_list.html'
 #    context_object_name = 'accessory_list'
 
 

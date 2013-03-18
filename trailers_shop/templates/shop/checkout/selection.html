@@ -11,11 +11,11 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="forminfo">
             <tbody>
             <tr>
-                <td height="50" style="font-size:14px; color:#aeadb5; vertical-align:middle; text-transform:uppercase;" valign="middle" align="left">Контактные данные</td>
+                <td height="50" class="contacts-header" valign="middle" align="left">Контактные данные</td>
             </tr>
             {% if shipping_address.errors %}
                 <tr>
-                    <td style="color: #ED1B2C;">
+                    <td class="attention">
                         Заполните все обязательные поля
                     </td>
                 </tr>
@@ -31,19 +31,19 @@
                         <tr>
                             <td>
                             </td>
-                            <td style="" valign="middle" align="left">
+                            <td valign="middle" align="left">
                                 <br>
                                 <br>
                             </td>
                         </tr>
                         <tr>
-                            <td class="lable">{{ shipping_address.name.label_tag }} <span style="color: #ED1B2C;">*</span></td>
+                            <td class="lable">{{ shipping_address.name.label_tag }} <span class="attention">*</span></td>
                             <td class="input">
                                 {{ shipping_address.name }}
                             </td>
                         </tr>
                         <tr>
-                            <td class="lable">{{ shipping_address.phone.label_tag }} <span style="color: #ED1B2C;">*</span></td>
+                            <td class="lable">{{ shipping_address.phone.label_tag }} <span class="attention">*</span></td>
                             <td class="input">
                                 {{ shipping_address.phone }}
                             </td>
