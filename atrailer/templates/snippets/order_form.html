@@ -1,0 +1,21 @@
+<a name="order-form"></a>
+<div class="tov-ques" id="form">
+    <div class="title">Задать вопрос, сделать предварительный заказ</div>
+    <p>Напишите свой вопрос и отправьте нам. Специалист свяжется с вами удобным для вас способом.</p>
+    <form id="callback-form" action="/callback/ajax/" method="post">
+        {% csrf_token %}
+        <span class="tit">Представьтесь:</span>
+        {{ callback_form.username }}
+        <br clear="all">
+        <span class="tit">Комментарий, вопрос:</span>
+        {{ callback_form.comment }}
+        <span class="que">Как с вами связаться?</span>
+        <span class="wr-ch"><input type="checkbox" value="">по e-mail:</span>
+        {{ callback_form.email }}
+        <br clear="all">
+        <span class="wr-ch"><input type="checkbox" value="">по телефону:</span>
+        {{ callback_form.phone_number }}
+        <br clear="all">
+        <input type="submit" class="sub callback-submit-btn" value="Отправить">
+    </form>
+</div>

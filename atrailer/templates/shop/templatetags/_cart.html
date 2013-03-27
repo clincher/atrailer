@@ -1,0 +1,4 @@
+<div class="cart">
+    <span class="title"><a href="{% url 'cart' %}">Корзина товаров</a></span>
+    Предметов в корзине: <a>{{ cart.total_quantity }} шт.</a> на сумму : <a>{{ cart.subtotal_price }} руб.</a>
+</div>

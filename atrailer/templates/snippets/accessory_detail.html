@@ -1,0 +1,25 @@
+<div class="product-main">
+    <div class="name">
+        <a href="{% url 'accessory_detail' object.slug %}" title="{{ object.name }}">{{ object.name }}</a>
+    </div>
+    <div class="for-pic">
+        <img src="{{ object.logo.src.url }}" border="0" alt="{{ object.name }}" />
+    </div>
+    <div class="note">
+        <div class="desc">
+            <p>Подходит к:
+                {% for item in object.recent.all %}
+                    <a href="{% url 'product_detail' item.slug %}" title="{{ item.name }}">{{ item.name }}</a>
+                    {% if not forloop.last %},{% endif %}
+                {% endfor %}
+            </p>
+            {{ object.description }}
+        </div>
+
+        <div class="price">Цена: <span><strong>{{ object.unit_price }}</strong> руб.</span></div>
+        <a href="#" class="buy">Заказать</a>
+        <a href="#" class="add" data-item-id="{{ object.pk }}" data-item-quantity="1">В корзину</a>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>

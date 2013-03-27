@@ -1,0 +1,117 @@
+{% load sitetree shop_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="ru">
+    <head>
+        <meta name="robots" content="{if $page.noindex}none{else}all{/if}" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="description" content="{$page.description}" />
+        <meta name="keywords" content="{$page.keywords}" />
+        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+        <title>{% block title %}Интернет-магазин автоприцепов{% endblock %}</title>
+        <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" type="text/css" />
+
+        <!--[if lte IE 7]>
+            <link href="{{ STATIC_URL }}images/stylesie.css" rel="stylesheet" type="text/css" />
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div id="wrap">
+            <div class="wrap-header">
+                <div id="header">
+                    <div class="logo">{% block logo %}<a href="{% url 'index' %}"><img src="{{ STATIC_URL }}images/logo.png" border="0" alt="" /></a>{% endblock %}Интернет-магазин автоприцепов</div>
+                    {% cart %}
+                    <div class="phone">8 (925) <span>009 62 93</span></div>
+                </div>
+            </div>
+            <div class="wrap-block-top">
+                <form action="{% if category %}{% url 'product_list' category.path %}{% else %}{% url 'product_list' %}{% endif %}">
+                <div class="block-top">
+                    <div class="title-block">Что перевозим:</div>
+                    <ul id="upm">
+                        {% for cat in categories %}
+                            <li {% if cat == category %}class="active"><span>{{ cat.name }}</span>{% else %}><a href="{% url 'product_list' cat.path %}">{{ cat.name }}</a>{% endif %}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="clear"></div>
+                    <div id="search-form" class="wrap-form">
+                        <div class="form-title">Выберите критерии<br />подбора прицепа</div>
+                        <span class="wr" style="width:170px;">
+                            <span class="title">{{ trailer_search_form.length.label }}:</span>
+                            {{ trailer_search_form.length }}
+                        </span>
+                        <span class="wr" style="width:150px;">
+                            <span class="title">{{ trailer_search_form.number_axis.label }}:</span>
+                            {{ trailer_search_form.number_axis }}
+                        </span>
+                        <span class="wr" style="width:153px;">
+                            <span class="title">{{ trailer_search_form.suspension.label }}:</span>
+                            {{ trailer_search_form.suspension }}
+                        </span>
+                        <span class="wr" style="width:150px;">
+                            <span class="title">{{ trailer_search_form.availability_of_brakes.label }}:</span>
+                            {{ trailer_search_form.availability_of_brakes }}
+                        </span>
+                        <span class="wr" style="width:150px;">
+                            <span class="title">{{ trailer_search_form.capacity.label }}:</span>
+                            {{ trailer_search_form.capacity }}
+                        </span>
+                        <div class="clear"></div>
+                    <div class="clear"></div>
+                    </div>
+                <div class="clear"></div>
+                </div>
+            <button class="but"></button>
+            </form>
+            </div>
+          <div class="cont-box">
+              <div class="left-block">
+                {% block left_block %}
+                    {% sitetree_menu from "left_menu" include "trunk" template "sitetree/left_menu.html" %}
+                    <a href="{% url 'request-callback' %}" class="zak-zv">Заказать звонок</a>
+                    <a href="#" class="price">Скачать прайс</a>
+                {% endblock %}
+              </div>
+              <div class="right-block">
+                <table class="main-block" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="sh-lf">&nbsp;</td>
+                    <td class="middle">
+                        <div class="cont-top"></div>
+                        <div class="wrap-content">
+                            <a href="javascript:scroll(0,0)" class="up">Наверх</a>
+                            <div class="path"><a href="{% url 'index' %}">Главная</a> / Интернет-магазин</div>
+                            <div class="content">
+                                {% block main_content %}{% endblock %}
+                            </div>
+                        </div>
+                    </td>
+                    <td class="sh-rt">&nbsp;</td>
+                  </tr>
+                </table>
+                <div class="cont-bot"></div>
+              </div>
+            <div class="clear"></div>
+            </div>
+        <div class="f-blank"></div>
+        </div>
+        <div class="wrap-footer">
+            <div id="footer">
+                <div class="info">
+                    <div class="tel">8 (925) <span>009 62 93</span></div>
+                    <div class="mail"><a href="mailto:info@atrailer.ru">info@atrailer.ru</a></div>
+                </div>
+                <div class="dev">
+                    <div class="copy">&copy; 2012 Интернет-магазин автоприцепов Atrailer.ru</div>
+                    <div class="design">Дизайн: <a rel="nofollow" target="_blank" href="http://aledesign.ru">aledesign.ru</a></div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.4.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/site.js"></script>
+        {% block js %}
+        {% endblock %}
+    </body>
+</html>
