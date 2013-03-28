@@ -52,7 +52,12 @@ p {margin: 1em 0;}
 #header .cart span.title a {color:#f96900}
 #header .cart a {color:#0f4c9c}
 .cart-header {font-size:16px; color:#414141; text-transform:uppercase;}
-.content .cart-table {width: 99%;}
+.content .cart-table {width:100%; border: 0 none; border-collapse:collapse; border-spacing: 0}
+.content .cart-table td {border: 0 none; vertical-align:top; padding: 0}
+
+.forminfo {width:100%; border: 0 none; border-collapse:collapse; border-spacing: 0}
+.forminfo td {border: 0 none; vertical-align:top; padding: 0}
+
 .cart-cell {font-size:14px; padding: 5px; text-align: left;}
 .cart-cell-total {border-bottom:1px dotted #FF0000; font-weight:bold; color:#F00;}
 .checkout-link {font-size: 18px;}
@@ -116,8 +121,8 @@ a.price {display:block; margin:0; width:194px; height:51px; text-align:center; f
 a.price:hover  {background:url(../images/price.png) 0 0 no-repeat}
 
 .right-block {float:left; padding:0; margin:0; width:802px}
-.right-block table.main-block {width:100%; border:none; border-collapse:collapse}
-.right-block table.main-block td {border:none; border-collapse:collapse; vertical-align:top}
+.right-block table.main-block {width:100%; border: 0 none; border-collapse:collapse; border-spacing: 0}
+.right-block table.main-block td {border: 0 none; border-collapse:collapse; vertical-align:top; padding: 0}
 .right-block table.main-block td.sh-lf {width:9px; background:url(../images/shadow-lf.png) 100% 50% no-repeat; height:830px}
 .right-block table.main-block td.sh-rt {width:9px; background:url(../images/shadow-rt.png) 0 50% no-repeat; height:830px}
 .right-block table.main-block td.middle {vertical-align:top; padding:0}
