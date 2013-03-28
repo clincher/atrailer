@@ -145,11 +145,11 @@ INSTALLED_APPS = INSTALLED_APPS + [
     'tinymce',
     'treeadmin',
     'shop_categories',
-#        'configurableproduct',
     'django_extensions',
     # internal apps
     'atrailer.apps.common',
     'atrailer.apps.customshop',
+    'atrailer.apps.customshop.categories',
     'atrailer.apps.customshop.address',
     'atrailer.apps.articles',
     'atrailer.apps.banners',
