@@ -28,6 +28,7 @@ a.highslide {display:block}
 a.highslide img {border:none}
 a.highslide:hover img {border:none}
 
+
 YMaps { color:#000; }
 
 h1,h2,h3,h4,h5,h6 { margin:0; padding:12px 0; color:#0f4c9c; font-family:Arial, Helvetica, sans-serif;font-weight:normal}
@@ -36,6 +37,7 @@ h2 { font-size:20px}
 h3 { font-size:18px}
 h4 { font-size:15px}
 h5,h6 { font-size:11px}
+p {margin: 1em 0;}
 
 
 #wrap {position:relative; height:auto !important; height:100%; min-height:100%; margin:0 0 -127px}
@@ -44,7 +46,7 @@ h5,h6 { font-size:11px}
 .wrap-header {background:url(../images/bg-head.jpg) 0 0 repeat-x}
 #header {position:relative; height:72px; width:1010px; margin:0 auto}
 .logo {position:absolute; top:14px; left:19px; font:italic 12px Arial, Helvetica, sans-serif; color:#0f4c9c}
-.logo img {border:none; display:block; margin:0 0 2px}
+.logo img {border: 0 none; display:block; margin:0 0 2px}
 #header .cart {position:absolute; top:6px; right:21px; width:157px; font:normal 12px/150% Arial, Helvetica, sans-serif; color:#4c4c4c}
 #header .cart span.title {display:block; padding:0 0 3px; font-size:13px; color:#f96900}
 #header .cart span.title a {color:#f96900}
@@ -174,11 +176,11 @@ ul.description li {padding:0 0 5px 0; margin:0; width:220px; float:left; font:no
 .tov-ques {padding:18px 5px 28px; margin:0}
 .tov-ques .title {background:url(../images/arr-lf.png) 0 0 no-repeat; padding:0 0 18px 37px; height:27px; font:normal 19px/27px Arial, Helvetica, sans-serif; color:#0f4c9c}
 .tov-ques form {padding:28px 0 0; margin:0; vertical-align:top}
-.tov-ques form input.text {padding:0 10px; margin:0 0 23px; vertical-align:top; border:1px solid #a9a9a9; background:#FFF; width:402px; height:26px; font:normal 13px/25px Arial, Helvetica, sans-serif; color:#727272; outline:none; display:inline-block}
-.tov-ques form textarea {width:402px; max-width:402px; min-width:402px; padding:5px 10px; height:114px; min-height:114px; max-height:114px; resize:none; border:1px solid #a9a9a9; background:#FFF; margin:10px 0 36px; font:normal 13px Arial, Helvetica, sans-serif; color:#727272; display:inline-block; overflow:auto}
-.tov-ques form span.que {display:block; padding:0 0 10px 136px; font:bold 13px Arial, Helvetica, sans-serif; color:#383838}
+.tov-ques form input.text {padding:0 10px; margin:0; vertical-align:top; border:1px solid #a9a9a9; background:#FFF; width:402px; height:26px; font:normal 13px/25px Arial, Helvetica, sans-serif; color:#727272; outline:none; display:inline-block}
+.tov-ques form textarea {width:402px; max-width:402px; min-width:402px; padding:5px 10px; height:114px; min-height:114px; max-height:114px; resize:none; border:1px solid #a9a9a9; background:#FFF; margin:0; font:normal 13px Arial, Helvetica, sans-serif; color:#727272; display:inline-block; overflow:auto}
+.tov-ques h4 {display:block; padding:0 0 10px 136px; font:bold 13px Arial, Helvetica, sans-serif; color:#383838}
 .tov-ques form span.tit {display:block; float:left; width:112px; padding:5px 0 0 24px; font:bold 13px Arial, Helvetica, sans-serif; color:#383838}
-.tov-ques form span.wr-ch {padding:0 0 0 25px; font:normal 13px/26px Arial, Helvetica, sans-serif; color:#383838; display:inline-block; width:112px}
+.tov-ques form span.wr-ch {padding:0 0 0 20px; font:normal 13px/26px Arial, Helvetica, sans-serif; color:#383838; display:inline-block; width:112px}
 .tov-ques form span.wr-ch input {margin:7px 5px 0 0; position:relative; top:3px; vertical-align:top; padding:0; position:relative; top:1px}
 .tov-ques form input.sub {display:block; text-align:center; padding:0 0 10px; margin:0 0 0 411px; cursor:pointer; border:none; color:#FFF; text-shadow:-1px -1px #3c78c7; background:url(../images/buy.png) 0 -34px no-repeat; width:152px; height:34px; font:bold 14px Verdana, Geneva, sans-serif;}
 .tov-ques form input.sub:hover {color:#6b6b6b; text-shadow:-1px -1px #dfdfdf; background:url(../images/buy.png) 0 0 no-repeat;}
