@@ -1,4 +1,4 @@
-Django==1.4.2
+Django==1.5
 Pillow
 South==0.7.6
 Werkzeug
@@ -13,7 +13,6 @@ django-shop-categories==0.8.beta.2
 django-sitetree==0.9.1
 django-tinymce==1.5.1b4
 -e git+git://github.com/clincher/django-treeadmin.git#egg=treeadmin
-django-classbasedsettings
 django-singletons
 django-shop-configurableproduct
 ipython
