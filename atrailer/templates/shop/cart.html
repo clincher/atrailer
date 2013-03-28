@@ -43,8 +43,8 @@
                             </table>
                         </td>
                         <td class="cart-cell number">
-                            <input type="text" name="form-{{ forloop.counter0 }}-quantity" id="id_form-{{ forloop.counter0 }}-quantity" value="{{ item.quantity }}"> шт.
-                            <input type="hidden" name="form-{{ forloop.counter0 }}-id" value="{{ item.quantity }}" id="id_form-{{ forloop.counter0 }}-id">
+                            <input type="text" name="form-{{ forloop.counter0 }}-quantity" id="id_form-{{ forloop.counter0 }}-quantity" value="{{ item.quantity }}"/> шт.
+                            <input type="hidden" name="form-{{ forloop.counter0 }}-id" value="{{ item.quantity }}" id="id_form-{{ forloop.counter0 }}-id"/>
                         </td>
                         <td class="cart-cell price">{{item.product.get_price}} р.</td>
                         <td class="cart-cell amount">{{ item.line_subtotal }} р.</td>

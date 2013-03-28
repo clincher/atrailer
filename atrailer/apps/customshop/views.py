@@ -135,7 +135,6 @@ class TrailerListView(CustomCategoryShopListView):
 class AccessoryListView(CustomCategoryShopListView):
     model = Accessory
     template_name = 'customshop/acessory_list.html'
-#    context_object_name = 'accessory_list'
 
 
 class AccessoryDetailView(DetailView):

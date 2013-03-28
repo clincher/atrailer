@@ -15,37 +15,17 @@ from atrailer.apps.customshop.views import (MyCheckoutSelectionView,
 
 urlpatterns = patterns('',
     # Products
-#    url(r'^$',
-#        ListView.as_view(
-#            model=CustomProduct,
-#            template_name="customshop/customproduct_list.html"
-#        ),
-#        name='product_list'
-#    ),
     url(r'^$',
         TrailerListView.as_view(),
-        # name='trailer-list'),
-#         TemplateView.as_view(template_name="index.html"),
         name='index'
     ),
 
-#    url(r'^catalog/$',
-#        ListView.as_view(
-#            model=Trailer,
-#            template_name="customshop/customproduct_list.html",
-#            paginate_by=10
-#        ),
-#        name='product_list'
-#    ),
     url(r'^catalog/(?P<path>[0-9A-Za-z-//]+)/page(?P<page>[0-9]+)/$',
         TrailerListView.as_view(),
         name='product_list'),
     url(r'^catalog/(?P<path>[0-9A-Za-z-//]+)/$',
         TrailerListView.as_view(),
         name='product_list'),
-    # url(r'^catalog/(?P<path>[0-9A-Za-z-//]+)/$',
-    #     CustomCategoryShopListView.as_view(),
-    #     name='product_list'),
     url(r'^catalog/$',
         TrailerListView.as_view(),
         name='product_list'),

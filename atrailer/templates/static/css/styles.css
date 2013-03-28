@@ -85,7 +85,7 @@ h5,h6 { font-size:11px}
 .wrap-form {padding:8px 0 0 12px; margin:0; float:left; vertical-align:top}
 .wrap-form .form-title {padding:13px 0 0; font:italic 13px Arial, Helvetica, sans-serif; color:#424242; float:left; width:194px}
 .wrap-form input {float:left; display:block; margin: 1px 5px 0 0; padding:0; vertical-align:top}
-.wrap-form span.wr {float:left; width:163px; padding:0; margin:0; font:normal 12px Arial, Helvetica, sans-serif; color:#000000}
+.wrap-form span.wr {float:left; padding:0 35px 0 0; margin:0; font:normal 12px Arial, Helvetica, sans-serif; color:#000000}
 .wrap-form span.wr span.title {display:block; font:bold 13px Arial, Helvetica, sans-serif; padding:0; color:#0f4c9c}
 .wrap-form span.wr em {font-style:normal; display:inline-block; padding:5px 0 0}
 .wrap-form span.wr label {font-style:normal; display:block; padding:5px 0 0}
