@@ -89,7 +89,7 @@ p {margin: 1em 0;}
 #upm li a {cursor:pointer;}
 #upm li.active span, #upm li a:hover {text-decoration:none; color:#0f4c9c; background:url(../images/bg_a.jpg) 0 0 repeat-x}
 
-.wrap-form {padding:8px 0 0 12px; margin:0; float:left; vertical-align:top}
+.wrap-form {padding:8px 0 0 12px;}
 .wrap-form .form-title {padding:13px 0 0; font:italic 13px Arial, Helvetica, sans-serif; color:#424242; float:left; width:194px}
 .wrap-form input {float:left; display:block; margin: 1px 5px 0 0; padding:0; vertical-align:top}
 .wrap-form span.wr {float:left; padding:0 35px 0 0; margin:0; font:normal 12px Arial, Helvetica, sans-serif; color:#000000}
