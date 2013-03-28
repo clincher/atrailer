@@ -1,20 +1,18 @@
 from django.conf import settings
 from django.conf.urls import patterns, url, include
 from django.contrib import admin
-
+from filebrowser.sites import site
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
 #    (r'^admin/filebrowser/', include('filebrowser.sites.urls')),
     (r'^tinymce/', include('tinymce.urls')),
+    url(r'^admin/filebrowser/', include(site.urls)),
     (r'^admin/', include(admin.site.urls)),
     (r'^tinymce/', include('tinymce.urls')),
    (r'^grappelli/', include('grappelli.urls')),
-#    url(r'^', include('apps.articles.urls')),
-#    (r'^cart/', include('shop_simplevariations.urls')),
     (r'^', include('atrailer.apps.customshop.urls')),
-#    url(r'^catalog/', include('shop_categories.urls')),
     (r'^callback/', include('atrailer.apps.callback.urls')),
 )
 

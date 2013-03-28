@@ -5,7 +5,7 @@ Werkzeug
 django-classy-tags==0.3.4.1
 django-debug-toolbar
 django-extensions
-django-filebrowser==3.5.1
+django-filebrowser==3.5.2
 django-mptt==0.5.5
 django-polymorphic==0.2
 django-shop==0.1.2

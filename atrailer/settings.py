@@ -39,6 +39,8 @@ USE_TZ = True
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
+FILEBROWSER_DIRECTORY = ''
+
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
 
@@ -80,8 +82,8 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = [
-    'filebrowser',
     'grappelli',
+    'filebrowser',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -92,7 +94,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'django.contrib.staticfiles',
     'sitetree',
-]
+    ]
 
 TEMPLATE_CONTEXT_PROCESSORS = [
     "django.contrib.auth.context_processors.auth",
