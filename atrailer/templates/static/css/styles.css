@@ -90,7 +90,7 @@ p {margin: 1em 0;}
 #upm li.active span, #upm li a:hover {text-decoration:none; color:#0f4c9c; background:url(../images/bg_a.jpg) 0 0 repeat-x}
 
 .wrap-form {padding:8px 0 0 12px;}
-.wrap-form .form-title {padding:13px 0 0; font:italic 13px Arial, Helvetica, sans-serif; color:#424242; float:left; width:194px}
+.wrap-form .form-title {padding:13px 0 0; font:italic 13px Arial, Helvetica, sans-serif; color:#424242; float:left; width:191px}
 .wrap-form input {float:left; display:block; margin: 1px 5px 0 0; padding:0; vertical-align:top}
 .wrap-form span.wr {float:left; padding:0 35px 0 0; margin:0; font:normal 12px Arial, Helvetica, sans-serif; color:#000000}
 .wrap-form span.wr span.title {display:block; font:bold 13px Arial, Helvetica, sans-serif; padding:0; color:#0f4c9c}
@@ -105,7 +105,7 @@ p {margin: 1em 0;}
 #lmenu {padding:0 0 51px; margin:0; list-style:none; font-size:0; line-height:0}
 #lmenu li {padding:0; margin:0; vertical-align:top; background:url(../images/lm_sep.png) 0 0 no-repeat}
 #lmenu li:first-child {background:none}
-#lmenu li a {display:block; padding:5px 0 0; cursor:pointer; font:normal 17px Arial, Helvetica, sans-serif; color:#414040; text-decoration:underline; background:url(../images/lm-a-top.png) 0 0 no-repeat}
+#lmenu li a {display:block; padding:5px 0 0; cursor:pointer; font:normal 17px Arial, Helvetica, sans-serif; color:#414040; text-decoration:underline; background:url(../images/lm-a-top.png) 0 0 no-repeat; position:relative;}
 #lmenu li a span.bot {display:block; padding:0 0 5px; background:url(../images/lm-a-bot.png) 0 100% no-repeat}
 #lmenu li a span.bg {display:block; padding:1px 10px 1px 26px; background:url(../images/lm-a-bg.png) 0 0 repeat-y}
 #lmenu li a:hover {color:#f88100; background:url(../images/lm-a-top-ov.png) 0 0 no-repeat; text-decoration:none}
@@ -204,3 +204,9 @@ ul.description li {padding:0 0 5px 0; margin:0; width:220px; float:left; font:no
 .wrap-products .product table td.pic a img {border:1px solid #dcdcdc}
 .wrap-products .product table td.name {padding:0; font:normal 14px Arial, Helvetica, sans-serif; color:#226cce}
 .wrap-products .product table td.name a {color:#226cce}
+
+#search-form:after{
+    content:"";
+    display:block;
+    clear:both;
+}
