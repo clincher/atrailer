@@ -1,9 +1,8 @@
 {% load sitetree shop_tags %}<!DOCTYPE html>
     <head>
-        <meta name="robots" content="{if $page.noindex}none{else}all{/if}" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="description" content="{$page.description}" />
-        <meta name="keywords" content="{$page.keywords}" />
+        <meta name="description" content="{{ page.description }}" />
+        <meta name="keywords" content="{{ page.keywords }}" />
         <title>{% block title %}Интернет-магазин автоприцепов{% endblock %}</title>
         <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" type="text/css" />
         <!--[if lte IE 7]>
