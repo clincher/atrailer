@@ -13,7 +13,7 @@
                     {% if not forloop.last %},{% endif %}
                 {% endfor %}
             </p>
-            {{ object.description }}
+            {{ object.description|safe }}
         </div>
 
         <div class="price">Цена: <span><strong>{{ object.unit_price }}</strong> руб.</span></div>

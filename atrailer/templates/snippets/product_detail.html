@@ -14,7 +14,7 @@
         </ul>
 
         <div class="desc">
-            {{ object.description }}
+            {{ object.description|safe }}
         </div>
 
         <div class="price">Цена: <span><strong>{{ object.unit_price }}</strong> руб.</span></div>
