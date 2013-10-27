@@ -170,6 +170,12 @@ SHOP_ADDRESS_MODEL = 'atrailer.apps.customshop.address.models.Address'
 #    SHOP_PRODUCT_MODEL = ('atrailer.apps.customshop.base_models.CustomProduct', 'shop')
 SHOP_CATEGORIES_CATEGORY_MODEL = 'atrailer.apps.customshop.categories.models.Category'
 
+ALLOWED_HOSTS = [
+    'atrailer.ru',
+    'atrailer.ru.',
+    'localhost'
+]
+
 if DEBUG:
     DEBUG_TOOLBAR_PANELS = (
         'debug_toolbar.panels.version.VersionDebugPanel',
@@ -195,7 +201,7 @@ if DEBUG:
     # STATICFILES_DIRS = LocalSettings.STATICFILES_DIRS +\
     #                    (os.path.join(LocalSettings.PROJECT_ROOT, 'media'),)
 else:
-    FILES_URL = 'http://atrailers.ru'
+    FILES_URL = 'http://atrailer.ru'
     # MEDIA_URL = FILES_URL + LocalSettings.MEDIA_URL
     STATIC_URL = FILES_URL + STATIC_URL
 
