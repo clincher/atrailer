@@ -1,4 +1,4 @@
-Django==1.5
+Django==1.5.5
 Pillow
 South==0.7.6
 Werkzeug
@@ -6,13 +6,13 @@ django-classy-tags==0.3.4.1
 django-debug-toolbar
 django-extensions
 django-filebrowser==3.5.2
-django-mptt==0.5.5
+django-mptt==0.6.0
 django-polymorphic==0.2
 django-shop==0.1.2
 django-shop-categories==0.8.beta.2
 django-sitetree==0.9.1
 django-tinymce==1.5.1b4
--e git+git://github.com/clincher/django-treeadmin.git#egg=treeadmin
+django-treeadmin==0.4.1
 django-singletons
 django-shop-configurableproduct
 ipython
