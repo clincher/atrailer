@@ -1,6 +1,6 @@
 Django==1.5.5
 Pillow
-South==0.7.6
+South
 Werkzeug
 django-classy-tags==0.3.4.1
 django-debug-toolbar
