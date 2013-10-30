@@ -75,7 +75,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'atrailer.urls'
 
-WSGI_APPLICATION = 'atrailer.wsgi.application'
+#WSGI_APPLICATION = 'atrailer.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
