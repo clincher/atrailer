@@ -1,3 +1,11 @@
-Dear Shop-Owner,
+Пришел заказ с сайта Atrailer.ru
 
-a customer just placed a new order.
+Общая сумма заказа с учетом доставки равна {{ order.order_total }} рублей
+
+Указанные контактные данные:
+{{ order.shipping_address_text }}
+
+содержание заказа:
+{% for item in order.items.all %}
+    {{ item.product_name }} - {{ item.quantity }}шт.
+{% endfor %}

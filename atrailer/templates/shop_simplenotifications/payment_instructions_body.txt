@@ -1,9 +1,16 @@
-Dear Customer,
+Добрый день!
 
-thank you so much for your purchase at MyShop.com.
+Спасибо, что воспользовались услугами нашего интернет магазина.
 
-Please send us all your money, now!
+На наш e-mail пришло Ваше поручение доставить заказ:
 
-Kind regards,
+{% for item in order.items.all %}
+    {{ item.product_name }}
+{% endfor %}
 
-MyShop.com
+Указанные контактные данные:
+{{ order.shipping_address_text }}
+
+Общая сумма заказа с учетом доставки равна {{ order.order_total }} рублей
+
+Представитель нашей компании свяжется с Вами для уточнения заказа, места и времени доставки.
