@@ -47,6 +47,9 @@ $(function() {
             if (errors['username']) msg += '\n- ваше имя ';
             if (errors['comment']) msg += '\n- вопрос ';
             if (errors['email_or_phone']) msg += '\n- email или номер телефона ';
+            refresh_button = $(".js-captcha-refresh").get(0);
+            $(refresh_button).siblings('img').attr('src', json['new_cptch_image']);
+            $(refresh_button).siblings('[name=captcha_0]').attr('value', json['new_cptch_key']);
 
             alert(msg);
         } else {
@@ -83,9 +86,12 @@ $(function() {
     });
     $('.js-captcha-refresh').click(function(e){
         e.preventDefault();
-        $form = $(this).parents('form');
+        url = $(this).parents('form').attr('action');
 
-        $.getJSON($(this).data('url'), {}, function(json) {
+        $.getJSON(url, {}, function(json) {
+            refresh_button = $(".js-captcha-refresh").get(0);
+            $(refresh_button).siblings('img').attr('src', json['new_cptch_image']);
+            $(refresh_button).siblings('[name=captcha_0]').attr('value', json['new_cptch_key']);
             // This your should update captcha image src and captcha hidden input
         });
         return false;
