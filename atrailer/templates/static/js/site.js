@@ -85,13 +85,11 @@ $(function() {
         );
     });
     $('.js-captcha-refresh').click(function(e){
-        var form = $(this).parents('form').get(0);
-        $(form).ajaxForm(function(res) {
+        $($(this).parents('form').get(0)).ajaxForm(function(res) {
             var response = $.parseJSON(res);
             refresh_button = $(".js-captcha-refresh").get(0);
             $(refresh_button).siblings('img').attr('src', response['new_cptch_image']);
             $(refresh_button).siblings('[name=captcha_0]').attr('value', response['new_cptch_key']);
         });
-        return false;
     });
 });
