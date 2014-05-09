@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^tinymce/', include('tinymce.urls')),
    (r'^grappelli/', include('grappelli.urls')),
+    url(r'^captcha/', include('captcha.urls')),
     (r'^', include('atrailer.apps.customshop.urls')),
     (r'^callback/', include('atrailer.apps.callback.urls')),
 )

@@ -94,6 +94,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'django.contrib.staticfiles',
     'sitetree',
+    'captcha',
     ]
 
 TEMPLATE_CONTEXT_PROCESSORS = [

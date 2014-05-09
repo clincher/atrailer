@@ -19,3 +19,4 @@ ipython
 sorl-thumbnail==11.12
 wsgiref
 django-grappelli
+django-simple-captcha

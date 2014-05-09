@@ -5,6 +5,8 @@ from django.contrib.sites.models import Site
 from django.http import HttpResponse
 from django.utils.encoding import force_unicode
 from django.views.generic.base import TemplateView
+from captcha.models import CaptchaStore
+from captcha.helpers import captcha_image_url
 
 from forms import CallbackForm
 
@@ -24,7 +26,15 @@ def handle_ajax(request, url):
             callback.save()
             return HttpResponse(json.dumps({}))
         else:
-            return HttpResponse(json.dumps({'errors':sanitize(form.errors)}))
+            result = dict()
+            result['status'] = 0
+            result['errors'] = form.errors
+
+            result['new_cptch_key'] = CaptchaStore.generate_key()
+            result['new_cptch_image'] = captcha_image_url(
+                result['new_cptch_key'])
+
+            return HttpResponse(json.dumps(result))
 
 
 class RequestCallback(TemplateView):

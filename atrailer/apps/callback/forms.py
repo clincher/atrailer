@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from django.core.exceptions import ValidationError
+from captcha.fields import CaptchaField
+
 
 from models import Callback
 
@@ -9,6 +11,13 @@ class CallbackForm(forms.ModelForm):
     """
     The form shown when giving callback
     """
+
+    captcha = CaptchaField()
+
+    class Meta:
+        model = Callback
+        exclude = ['site']
+
     def __init__(self, *args, **kwargs):
         super(CallbackForm, self).__init__(*args, **kwargs)
 
@@ -31,16 +40,9 @@ class CallbackForm(forms.ModelForm):
     def clean(self):
         cd = super(CallbackForm, self).clean()
 
-        print cd
-
         if cd.get('email') == '' and cd.get('phone_number') == '':
             self._errors["email_or_phone"] = self.error_class([
                 u'Укажите email, либо номер телефона'
             ])
 
         return cd
-
-
-    class Meta:
-        model = Callback
-        exclude = ['site']

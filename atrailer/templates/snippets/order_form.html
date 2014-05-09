@@ -22,6 +22,10 @@
             {{ callback_form.phone_number }}
         </p>
         <p>
+            <span class="wr-ch">Защита от ботов:</span>
+            {{ callback_form.captcha }}<button class='js-captcha-refresh'>обновить код</button>
+        </p>
+        <p>
             <input type="submit" class="sub callback-submit-btn" value="Отправить"/>
         </p>
     </form>
