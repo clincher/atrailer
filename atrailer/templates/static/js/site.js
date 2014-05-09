@@ -81,13 +81,13 @@ $(function() {
             {csrfmiddlewaretoken: getCookie('csrftoken')}
         );
     });
-    $('.js-captcha-refresh').click(function(){
-    $form = $(this).parents('form');
+    $('.js-captcha-refresh').click(function(e){
+        e.preventDefault();
+        $form = $(this).parents('form');
 
-    $.getJSON($(this).data('url'), {}, function(json) {
-        // This your should update captcha image src and captcha hidden input
+        $.getJSON($(this).data('url'), {}, function(json) {
+            // This your should update captcha image src and captcha hidden input
+        });
+        return false;
     });
-
-    return false;
-});
 });
