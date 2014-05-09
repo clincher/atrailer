@@ -86,9 +86,9 @@ $(function() {
     });
     $('.js-captcha-refresh').click(function(e){
         e.preventDefault();
-        url = $(this).parents('form').attr('action');
+        var form = $(this).parents('form');
 
-        $.getJSON(url, {}, function(res) {
+        $(form).getJSON(function(res) {
             var json = $.parseJSON(res);
             refresh_button = $(".js-captcha-refresh").get(0);
             $(refresh_button).siblings('img').attr('src', json['new_cptch_image']);
