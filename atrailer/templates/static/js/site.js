@@ -48,8 +48,8 @@ $(function() {
             if (errors['comment']) msg += '\n- вопрос ';
             if (errors['email_or_phone']) msg += '\n- email или номер телефона ';
             refresh_button = $(".js-captcha-refresh").get(0);
-            $(refresh_button).siblings('img').attr('src', json['new_cptch_image']);
-            $(refresh_button).siblings('[name=captcha_0]').attr('value', json['new_cptch_key']);
+            $(refresh_button).siblings('img').attr('src', response['new_cptch_image']);
+            $(refresh_button).siblings('[name=captcha_0]').attr('value', response['new_cptch_key']);
 
             alert(msg);
         } else {
@@ -85,13 +85,12 @@ $(function() {
         );
     });
     $('.js-captcha-refresh').click(function(e){
-        e.preventDefault();
 
         $(this).parents('form').ajaxForm(function(res) {
-            var json = $.parseJSON(res);
+            var response = $.parseJSON(res);
             refresh_button = $(".js-captcha-refresh").get(0);
-            $(refresh_button).siblings('img').attr('src', json['new_cptch_image']);
-            $(refresh_button).siblings('[name=captcha_0]').attr('value', json['new_cptch_key']);
+            $(refresh_button).siblings('img').attr('src', response['new_cptch_image']);
+            $(refresh_button).siblings('[name=captcha_0]').attr('value', response['new_cptch_key']);
         });
         return false;
     });
