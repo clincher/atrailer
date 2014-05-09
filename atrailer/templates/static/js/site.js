@@ -85,8 +85,8 @@ $(function() {
         );
     });
     $('.js-captcha-refresh').click(function(e){
-
-        $(this).parents('form').ajaxForm(function(res) {
+        var form = $(this).parents('form').get(0);
+        $(form).ajaxForm(function(res) {
             var response = $.parseJSON(res);
             refresh_button = $(".js-captcha-refresh").get(0);
             $(refresh_button).siblings('img').attr('src', response['new_cptch_image']);
