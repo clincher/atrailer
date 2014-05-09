@@ -88,11 +88,11 @@ $(function() {
         e.preventDefault();
         url = $(this).parents('form').attr('action');
 
-        $.getJSON(url, {}, function(json) {
+        $.getJSON(url, {}, function(res) {
+            var json = $.parseJSON(res);
             refresh_button = $(".js-captcha-refresh").get(0);
             $(refresh_button).siblings('img').attr('src', json['new_cptch_image']);
             $(refresh_button).siblings('[name=captcha_0]').attr('value', json['new_cptch_key']);
-            // This your should update captcha image src and captcha hidden input
         });
         return false;
     });
